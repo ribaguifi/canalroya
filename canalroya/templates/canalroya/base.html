@@ -50,7 +50,7 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+          <li><a class="nav-link scrollto active" href="{% url 'canalroya:testimonial-new' %}">Home</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -70,16 +70,9 @@
   <main id="main">
 
     <!-- ======= Services Section ======= -->
-    <section id="services" class="services">
+    <section id="services" class="services section-bg">
       <div class="container">
-
-        <div class="section-title" data-aos="fade-in" data-aos-delay="100">
-          <h2>Únete</h2>
-          <p>Envía tu testimonio para mostrar tu apoyo a la defensa de Canal Roya y su conservación.</p>
-        </div>
-
         {% block content %}{% endblock content %}
-
       </div>
     </section><!-- End Services Section -->
 

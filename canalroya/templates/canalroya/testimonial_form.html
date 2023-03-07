@@ -1,42 +1,24 @@
 {% extends "canalroya/base.html" %}
+{% load django_bootstrap5 %}
 
 {% block content %}
-<form method="post" enctype="multipart/form-data">
-  {% csrf_token %}
+<div class="section-title" data-aos="fade-in" data-aos-delay="100">
+  <h2>Únete</h2>
+  <p>Manifiesta tu apoyo en defensa de Canal Roya.</p>
+</div>
 
-  <div class="row">
-    <div class="col-md-6 mb-5 mb-lg-0">
-      <div class="icon-box" data-aos="fade-up">
+<div class="card p-3" data-aos="fade-up">
+  <div class="card-body">
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {% bootstrap_form form %}
 
-        <h4 class="title">{{ form.first_name.label }}*</h4>
-        {{ form.first_name }}
+      <button class="btn btn-success" type="submit">Enviar</button>
+      <button class="btn btn-outline-danger" type="reset">Cancelar</button>
 
-        <h4 class="title">{{ form.last_name.label }}*</h4>
-        {{ form.last_name }}
-
-        <h4 class="title">{{ form.profession.label }}*</h4>
-        {{ form.profession }}
-
-        <h4 class="title">{{ form.image.label }}*</h4>
-        {{ form.image }}
-
-        <h4 class="title">{{ form.email.label }} (opcional)</h4>
-        {{ form.email }}
-      </div>
-    </div>
-
-    <div class="col-md-6 mb-5 mb-lg-0">
-      <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
-        <h4 class="title">{{ form.comment.label }}*</h4>
-        {{ form.comment }}
-        <div class="mt-3">
-          <button class="btn btn-success" type="submit">Enviar</button>
-        </div>
-      </div>
-    </div>
+    </form>
   </div>
-
-</form>
+</div>
 
 
 {% endblock %}
