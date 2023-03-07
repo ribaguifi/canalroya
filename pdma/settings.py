@@ -56,7 +56,8 @@ ROOT_URLCONF = 'pdma.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        # TODO(@slamora): why doesn't load app templates without setting 'DIRS'???
+        'DIRS': [Path(BASE_DIR, 'canalroya/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
