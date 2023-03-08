@@ -8,7 +8,8 @@ from .utils import normalize_email
 class Testimonial(models.Model):
     first_name = models.CharField('Nombre', max_length=30)
     last_name = models.CharField('Apellidos', max_length=150)
-    profession = models.CharField('Profesión', max_length=150)
+    profession = models.CharField('Profesión', max_length=50)
+    city = models.CharField('Localidad', max_length=50)
     comment = models.TextField('Comentarios')
     image = models.ImageField('Foto', upload_to='images')
 

@@ -16,7 +16,7 @@ class CanalRoyaContextMixin:
 
 class TestimonialCreateView(CanalRoyaContextMixin, CreateView):
     model = Testimonial
-    fields = ("first_name", "last_name", "profession", "comment", "image")
+    fields = ("first_name", "last_name", "profession", "city", "comment", "image")
     success_url = reverse_lazy('canalroya:testimonial-thanks')
 
 
