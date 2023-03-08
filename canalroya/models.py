@@ -12,7 +12,6 @@ class Testimonial(models.Model):
     comment = models.TextField('Comentarios')
     image = models.ImageField('Foto', upload_to='images')
 
-    email = models.EmailField('Correo electrónico', blank=True)
     created_at = models.DateTimeField(_('created at'), default=timezone.now)
 
     def __str__(self):
