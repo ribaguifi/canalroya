@@ -6,13 +6,13 @@ from .utils import normalize_email
 
 
 class Testimonial(models.Model):
-    first_name = models.CharField(_('first name'), max_length=30)
-    last_name = models.CharField(_('last name'), max_length=150)
-    profession = models.CharField(_('profession'), max_length=150)
-    comment = models.TextField(_('comment'))
-    image = models.ImageField(_('image'), upload_to='images')
+    first_name = models.CharField('Nombre', max_length=30)
+    last_name = models.CharField('Apellidos', max_length=150)
+    profession = models.CharField('Profesión', max_length=150)
+    comment = models.TextField('Comentarios')
+    image = models.ImageField('Foto', upload_to='images')
 
-    email = models.EmailField(_('email address'), blank=True)
+    email = models.EmailField('Correo electrónico', blank=True)
     created_at = models.DateTimeField(_('created at'), default=timezone.now)
 
     def __str__(self):
