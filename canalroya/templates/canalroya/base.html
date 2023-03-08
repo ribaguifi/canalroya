@@ -50,7 +50,7 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="{% url 'canalroya:testimonial-new' %}">Home</a></li>
+          <li><a class="nav-link scrollto active" href="{% url 'canalroya:testimonial-new' %}">Inicio</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -69,16 +69,21 @@
 
   <main id="main">
 
-    <!-- ======= Services Section ======= -->
-    <section id="services" class="services section-bg">
-      <div class="container">
-        {% block content %}{% endblock content %}
-      </div>
-    </section><!-- End Services Section -->
-
     <!-- ======= Counts Section ======= -->
     <section id="counts" class="counts  section-bg">
       <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <h2>No al destrozo de Canal Roya</h2>
+            <p>
+              <strong>Quieren unir las estaciones de esquí de Formigal, Astún y Candanchú a través del valle de Canal Roya.</strong><br/>
+              Si este proyecto se llevara a cabo destruiría irreversiblemente un valle de gran valor medioambiental, geológico
+              y etnográfico que cuenta con una rica variedad de fauna y de flora y que sirve de corredor ecológico entre los
+              valles del Aragón y de Tena, teniendo además una geología singular por su pasado glaciar y volcánico y que cuenta
+              con un yacimiento megalítico poco estudiado.</p>
+          </div>
+          <h6>Entidades y personas que ya han mostrado su rechazo a este proyecto:</h6>
+        </div>
 
         <div class="row no-gutters">
 
@@ -182,6 +187,13 @@
 
       </div>
     </section><!-- End Testimonials Section -->
+
+    <!-- ======= New Testimonial Section ======= -->
+    <section id="services" class="services section-bg">
+      <div class="container">
+        {% block content %}{% endblock content %}
+      </div>
+    </section><!-- End New Testimonial Section -->
 
   </main><!-- End #main -->
 
