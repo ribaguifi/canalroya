@@ -18,6 +18,7 @@ class Testimonial(models.Model):
     last_name = models.CharField('Apellidos', max_length=150)
     profession = models.CharField('Profesión', max_length=50)
     city = models.CharField('Localidad', max_length=50)
+    province = models.CharField('Provincia', max_length=50)
     comment = models.TextField('Comentarios')
     image = models.ImageField('Foto', upload_to=testimonial_image_path)
 

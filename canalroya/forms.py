@@ -14,7 +14,7 @@ class TestimonialForm(forms.ModelForm):
 
     class Meta:
         model = Testimonial
-        fields = ("first_name", "last_name", "profession", "city",
+        fields = ("first_name", "last_name", "profession", "city", "province",
                   "comment", "image", "x", "y", "width", "height")
 
     def save(self):
