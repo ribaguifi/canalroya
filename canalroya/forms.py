@@ -4,6 +4,9 @@ from PIL import Image
 
 
 class TestimonialForm(forms.ModelForm):
+    IMAGE_WIDTH = 654
+    IMAGE_HEIGHT = 490
+
     x = forms.FloatField(widget=forms.HiddenInput())
     y = forms.FloatField(widget=forms.HiddenInput())
     width = forms.FloatField(widget=forms.HiddenInput())
@@ -24,7 +27,7 @@ class TestimonialForm(forms.ModelForm):
 
         image = Image.open(instance.image)
         cropped_image = image.crop((x, y, w+x, h+y))
-        resized_image = cropped_image.resize((400, 400), Image.ANTIALIAS)
+        resized_image = cropped_image.resize((self.IMAGE_WIDTH, self.IMAGE_HEIGHT), Image.ANTIALIAS)
         resized_image.save(instance.image.path)
 
         return instance

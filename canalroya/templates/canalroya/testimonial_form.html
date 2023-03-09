@@ -9,7 +9,8 @@
 
 <div class="card p-3" data-aos="fade-up">
   <div class="card-body">
-    <form id="formUpload" method="post" enctype="multipart/form-data">
+    <form id="formUpload" method="post" enctype="multipart/form-data"
+      data-image-width="{{ form.IMAGE_WIDTH }}" data-image-height="{{ form.IMAGE_HEIGHT }}">
       {% csrf_token %}
       {% bootstrap_form form %}
 
@@ -26,7 +27,7 @@
   <div class="modal-dialog">
       <div class="modal-content">
           <div class="modal-header">
-              <h4 class="modal-title">Crop Image</h4>
+              <h4 class="modal-title">Recortar imagen</h4>
               <button type="button" class="close" data-dismiss="modal">×</button>
           </div>
           <div class="modal-body">
@@ -42,19 +43,10 @@
                   </button>
               </div>
               <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary js-crop-and-upload">Crop and upload</button>
+              <button type="button" class="btn btn-primary js-crop-and-upload">Recortar y subir</button>
           </div>
       </div>
   </div>
-</div>
-
-<!-- CONTAINER TO DISPLAY THE CROPPED IMAGES -->
-<div class="row mt-5">
-{% for photo in photos %}
-  <div class="col-sm-4 col-md-3">
-      <img src="{{ photo.file.url }}" class="thumbnail">
-  </div>
-{% endfor %}
 </div>
 
 {% endblock %}
@@ -76,15 +68,17 @@
   });
 
   /* SCRIPTS TO HANDLE THE CROPPER BOX */
+  var imageWidth = $("#formUpload").data("image-width");
+  var imageHeight = $("#formUpload").data("image-height");
   var $image = $("#image");
   var cropBoxData;
   var canvasData;
   $("#modalCrop").on("shown.bs.modal", function () {
       $image.cropper({
       viewMode: 1,
-      aspectRatio: 1/1,
-      minCropBoxWidth: 200,
-      minCropBoxHeight: 200,
+      aspectRatio: 327/245,
+      minCropBoxWidth: imageWidth,
+      minCropBoxHeight: imageHeight,
       ready: function () {
           $image.cropper("setCanvasData", canvasData);
           $image.cropper("setCropBoxData", cropBoxData);
