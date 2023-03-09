@@ -3,7 +3,7 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView, TemplateView
 
 from canalroya.models import Testimonial
-
+from canalroya.forms import TestimonialForm
 
 class CanalRoyaContextMixin:
     def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
@@ -16,7 +16,7 @@ class CanalRoyaContextMixin:
 
 class TestimonialCreateView(CanalRoyaContextMixin, CreateView):
     model = Testimonial
-    fields = ("first_name", "last_name", "profession", "city", "comment", "image")
+    form_class = TestimonialForm
     success_url = reverse_lazy('canalroya:testimonial-thanks')
 
 
