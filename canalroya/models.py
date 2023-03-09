@@ -1,6 +1,16 @@
+from pathlib import PurePath
+
 from django.db import models
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
+from django.utils.text import slugify
+
+
+def testimonial_image_path(instance, filename):
+    filename_extension = PurePath(filename).suffix.lower()
+    full_name_slug = slugify(instance.get_full_name())
+    prefix = instance.created_at.strftime("%Y-%M-%dT%H-%m-%S")
+    return f"images/{prefix}-{full_name_slug}{filename_extension}"
 
 
 class Testimonial(models.Model):
@@ -9,7 +19,7 @@ class Testimonial(models.Model):
     profession = models.CharField('Profesión', max_length=50)
     city = models.CharField('Localidad', max_length=50)
     comment = models.TextField('Comentarios')
-    image = models.ImageField('Foto', upload_to='images')
+    image = models.ImageField('Foto', upload_to=testimonial_image_path)
 
     created_at = models.DateTimeField(_('created at'), default=timezone.now)
 
