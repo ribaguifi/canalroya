@@ -16,6 +16,12 @@ def testimonial_image_path(instance, filename):
 
 
 class Testimonial(models.Model):
+    class Status(models.IntegerChoices):
+        PENDING = 1
+        APPROVED = 2
+        SPAM = 3
+        TRASH = 4
+
     first_name = models.CharField('Nombre', max_length=30)
     last_name = models.CharField('Apellidos', max_length=150)
     profession = models.CharField('Profesión', max_length=50)
@@ -24,7 +30,9 @@ class Testimonial(models.Model):
     comment = models.TextField('Comentarios')
     image = models.ImageField('Foto', upload_to=testimonial_image_path)
 
-    created_at = models.DateTimeField(_('created at'), default=timezone.now)
+    created_at = models.DateTimeField(_('created at'), auto_now_add=True)
+    updated_at = models.DateTimeField(_('updated at'), auto_now=True)
+    status = models.IntegerField(choices=Status.choices, default=Status.PENDING)
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
