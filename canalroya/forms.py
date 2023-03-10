@@ -1,3 +1,4 @@
+from typing import Any, Dict
 from django import forms
 from canalroya.models import Testimonial
 from PIL import Image
@@ -16,6 +17,15 @@ class TestimonialForm(forms.ModelForm):
         model = Testimonial
         fields = ("first_name", "last_name", "profession", "city", "province",
                   "comment", "image", "x", "y", "width", "height")
+
+    def clean(self) -> Dict[str, Any]:
+        cleaned_data = super().clean()
+        crop_fields = ["x", "y", "width", "height"]
+        for fieldname in crop_fields:
+            if fieldname not in cleaned_data:
+                self.add_error("image", "Por favor, recorta la imagen para ajustar su tamaño.")
+                break
+        return cleaned_data
 
     def save(self):
         instance = super().save()

@@ -53,4 +53,16 @@
 
 {% block extra_script %}
 <script src="{% static 'js/testimonial-cropper.js' %}"></script>
+<script>
+  $(function () {
+    // scrollTo field with errors (if any)
+    if ($('.is-invalid').length ) {
+      window.scrollTo({
+        top: $('.is-invalid').offset().top,
+        left: 0,
+        behavior: 'smooth'
+      });
+    }
+  });
+</script>
 {% endblock %}
