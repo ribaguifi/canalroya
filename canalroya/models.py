@@ -5,6 +5,8 @@ from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 from django.utils.text import slugify
 
+from canalroya.helpers import get_province_choices
+
 
 def testimonial_image_path(instance, filename):
     filename_extension = PurePath(filename).suffix.lower()
@@ -18,7 +20,7 @@ class Testimonial(models.Model):
     last_name = models.CharField('Apellidos', max_length=150)
     profession = models.CharField('Profesión', max_length=50)
     city = models.CharField('Localidad', max_length=50)
-    province = models.CharField('Provincia', max_length=50)
+    province = models.CharField('Provincia', max_length=50, choices=get_province_choices())
     comment = models.TextField('Comentarios')
     image = models.ImageField('Foto', upload_to=testimonial_image_path)
 
