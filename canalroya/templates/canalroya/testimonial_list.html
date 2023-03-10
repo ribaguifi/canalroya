@@ -8,6 +8,14 @@
 
 {% block extra_style %}
 <style>
+  .rg-testimonial-intro {
+    text-align: center;
+    color: #54595f;
+    font-family: "Raleway", Sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+  }
+
   .rg-testimonial {
     margin-top: 1.5em;
     text-align: center;
@@ -40,6 +48,10 @@
     font-size: 16px;
   }
 
+  #share .icon a {
+    margin-right: 1.5em;
+  }
+
 </style>
 {% endblock %}
 
@@ -47,55 +59,41 @@
 <!-- ======= Testimonials Section ======= -->
 <section id="testimonials" class="testimonials section-bg">
   <div class="container">
-
-      <div class="elementor-column elementor-col-33 elementor-top-column elementor-element elementor-element-e80497b"
-        data-id="e80497b" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-        <div class="elementor-widget-wrap elementor-element-populated">
-          <div
-            class="elementor-element elementor-element-c634e27 eael-team-align-centered elementor-widget elementor-widget-eael-team-member"
-            data-id="c634e27" data-element_type="widget" data-widget_type="eael-team-member.default">
-            <div class="elementor-widget-container">
-              <div id="eael-team-member-c634e27" class="eael-team-item eael-team-members-simple ">
-                <div class="eael-team-item-inner">
-                  <div class="eael-team-image">
-                    <figure>
-                      <img decoding="async" src="https://www.garabatoestudio.com/wp-content/uploads/2023/03/ARRIEL.jpg"
-                        alt="">
-                    </figure>
-                  </div>
-                  <div class="eael-team-content">
-                    <h3 class="eael-team-member-name">Arriel Domínguez</h3>
-                    <h4 class="eael-team-member-position">Quesero, Villanúa</h4>
-                    <p class="eael-team-text">"Queremos una Canal Roya libre y salvaje para que la puedan disfrutar las
-                      próximas generaciones."</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <p class="rg-testimonial-intro"><strong>Uno de los argumentos que usan los promotores del proyecto para justificar esta
+          brutal agresión a nuestras montañas es que la mayoría de la gente del territorio apoya el proyecto. Nada más lejos
+          de la realidad.</strong> Vecinos de todos los valles junto con Aragón entero, científicos, esquiadores, montañeros y
+        amigos de los Pirineos de todos los rincones… demostramos que no es verdad.</p>
 
       <div class="row">
       {% for obj in object_list %}
-      <div class="col-4 rg-testimonial">
-        <div class="card">
-          <img src="{{ obj.image.url }}" class="card-img-top" alt="{{ obj.get_full_name }}">
-          <div class="card-body">
-            <h5 class="card-title rg-team-member-name">{{ obj.get_full_name }}</h5>
-            <h6 class="rg-team-member-position">{{ obj.profession}}, {{ obj.city }}</h6>
-            <p class="card-text rg-team-text">"{{ obj.comment }}"</p>
+        <div class="col-12 col-md-4 rg-testimonial">
+          <div class="card">
+            <img src="{{ obj.image.url }}" class="card-img-top" alt="{{ obj.get_full_name }}">
+            <div class="card-body">
+              <h5 class="card-title rg-team-member-name">{{ obj.get_full_name }}</h5>
+              <h6 class="rg-team-member-position">{{ obj.profession}}, {{ obj.city }}</h6>
+              <p class="card-text rg-team-text">"{{ obj.comment }}"</p>
+            </div>
           </div>
         </div>
-      </div>
       {% endfor %}
-
       </div>
-
-
 
   </div>
 </section>
+
+<!-- ======= Cta Section ======= -->
+<section id="cta" class="cta">
+  <div class="container aos-init aos-animate" data-aos="zoom-in">
+
+    <div class="text-center">
+      <p>¡Únete a la voz de la montaña!</p>
+      <a class="cta-btn" href="{% url 'canalroya:testimonial-new' %}#unirme">Deja tu testimonio</a>
+    </div>
+
+  </div>
+</section>
+<!-- End Cta Section -->
 
 <!-- ======= Share Section ======= -->
 <section id="share" class="testimonials section-bg">
@@ -106,11 +104,11 @@
 
       <div class="services mt-5">
         <div class="icon">
-          <a href="https://www.facebook.com/sharer/sharer.php?u=http://canalroya.ribaguifi.com/" target="_blank" rel="nofollow noopener"><i class="bi bi-facebook"></i></a>
-          <a href="https://twitter.com/intent/tweet?url=http://canalroya.ribaguifi.com/&text=&via=" target="_blank" rel="nofollow noopener"><i class="bi bi-twitter"></i></a>
-          <a href="https://www.linkedin.com/shareArticle?url=http://canalroya.ribaguifi.com/&title=" target="_blank" rel="nofollow noopener"><i class="bi bi-linkedin"></i></a>
-          <a href="whatsapp://send?text=http://canalroya.ribaguifi.com/" target="_blank" rel="nofollow noopener"><i class="bi bi-whatsapp"></i></a>
-          <a href="https://telegram.me/share/url?url=http://canalroya.ribaguifi.com/&text=" target="_blank" rel="nofollow noopener"><i class="bi bi-telegram"></i></a>
+          <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" target="_blank" rel="nofollow noopener"><i class="bi bi-facebook"></i></a>
+          <a href="https://twitter.com/intent/tweet?url={{ request.build_absolute_uri }}&text=&via=" target="_blank" rel="nofollow noopener"><i class="bi bi-twitter"></i></a>
+          <a href="https://www.linkedin.com/shareArticle?url={{ request.build_absolute_uri }}&title=" target="_blank" rel="nofollow noopener"><i class="bi bi-linkedin"></i></a>
+          <a href="whatsapp://send?text={{ request.build_absolute_uri }}" target="_blank" rel="nofollow noopener"><i class="bi bi-whatsapp"></i></a>
+          <a href="https://telegram.me/share/url?url={{ request.build_absolute_uri }}&text=" target="_blank" rel="nofollow noopener"><i class="bi bi-telegram"></i></a>
         </div>
       </div>
     </div>
