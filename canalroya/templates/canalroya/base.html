@@ -63,7 +63,8 @@
       <nav id="navbar" class="navbar">
         <ul>
           <li><a class="nav-link scrollto active" href="{% url 'canalroya:testimonial-new' %}">Inicio</a></li>
-          <li><a class="nav-link scrollto active" href="{% url 'canalroya:testimonial-new' %}#unirme">Unirme</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'canalroya:testimonial-new' %}#unirme">Unirme</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'canalroya:testimonial-list' %}">Testimonios</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -104,7 +105,7 @@
                   <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                 </p>
                 <img src="{% static 'img/saul-irigaray.jpeg' %}" class="testimonial-img" alt="">
-                <h3>Saul Irigaray</h3>
+                <h3>Saúl Irigaray</h3>
                 <h4>Ilustrador y Montañero. Bielsa y Jaca</h4>
               </div>
             </div><!-- End testimonial item -->
@@ -150,6 +151,10 @@
 
           </div>
           <div class="swiper-pagination"></div>
+        </div>
+
+        <div class="text-center pt-2">
+          <h4><a class="btn btn-outline-success" href="{% url 'canalroya:testimonial-list' %}">Ver otros testimonios.</a></h4>
         </div>
 
       </div>

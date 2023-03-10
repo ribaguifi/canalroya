@@ -1,6 +1,6 @@
 from typing import Any, Dict
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, TemplateView
+from django.views.generic import CreateView, ListView, TemplateView
 
 from canalroya.models import Testimonial
 from canalroya.forms import TestimonialForm
@@ -22,3 +22,10 @@ class TestimonialCreateView(CanalRoyaContextMixin, CreateView):
 
 class TestimonialThanksView(CanalRoyaContextMixin, TemplateView):
     template_name = "canalroya/testimonial_thanks.html"
+
+
+class TestimonialListView(ListView):
+    model = Testimonial
+
+    def get_queryset(self):
+        return Testimonial.objects.filter(status=Testimonial.Status.APPROVED)
