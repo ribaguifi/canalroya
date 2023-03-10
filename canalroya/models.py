@@ -33,6 +33,7 @@ class Testimonial(models.Model):
     created_at = models.DateTimeField(_('created at'), auto_now_add=True)
     updated_at = models.DateTimeField(_('updated at'), auto_now=True)
     status = models.IntegerField(choices=Status.choices, default=Status.PENDING)
+    priority = models.PositiveSmallIntegerField(default=100, help_text="Allow define manually testimonial order")
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"

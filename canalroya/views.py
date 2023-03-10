@@ -28,4 +28,4 @@ class TestimonialListView(ListView):
     model = Testimonial
 
     def get_queryset(self):
-        return Testimonial.objects.filter(status=Testimonial.Status.APPROVED)
+        return Testimonial.objects.filter(status=Testimonial.Status.APPROVED).order_by("priority", "created_at")
