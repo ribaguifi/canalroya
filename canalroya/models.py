@@ -35,6 +35,11 @@ class Testimonial(models.Model):
     status = models.IntegerField(choices=Status.choices, default=Status.PENDING)
     priority = models.PositiveSmallIntegerField(default=100, help_text="Allow define manually testimonial order")
 
+    class Meta:
+        indexes = [
+            models.Index(fields=['priority', 'created_at'])
+        ]
+
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
 
