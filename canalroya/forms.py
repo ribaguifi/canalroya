@@ -8,6 +8,7 @@ class TestimonialForm(forms.ModelForm):
     IMAGE_WIDTH = 654
     IMAGE_HEIGHT = 490
 
+    comment = forms.CharField(max_length=400, widget=forms.widgets.Textarea, help_text="Máximo 400 carácteres")
     x = forms.FloatField(widget=forms.HiddenInput())
     y = forms.FloatField(widget=forms.HiddenInput())
     width = forms.FloatField(widget=forms.HiddenInput())
