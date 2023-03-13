@@ -1,0 +1,32 @@
+{% load paginator_tags %}
+
+<nav aria-label="Navegación por las diferentes páginas">
+  <ul class="pagination">
+    <li class="page-item {% if not page_obj.has_previous %}disabled{% endif %}">
+      <a class="page-link" aria-label="Anterior"
+        href="{% if page_obj.has_previous %}?page={{ page_obj.previous_page_number }}{% endif %}#testimonials">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+
+    {% get_proper_elided_page_range page_obj.paginator page_obj.number as page_range %}
+    {% for i in page_range %}
+      {% if page_obj.number == i %}
+        <li class="active page-item"><span class="page-link">{{ i }}</span></li>
+      {% else %}
+        {% if i == page_obj.paginator.ELLIPSIS %}
+          <li class="page-item"><span class="page-link">{{ page_obj.paginator.ELLIPSIS }}</span></li>
+        {% else %}
+          <li class="page-item"><a class="page-link" href="?page={{ i }}#testimonials">{{ i }}</a></li>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+
+    <li class="page-item {% if not page_obj.has_next %}disabled{% endif %}">
+      <a class="page-link" aria-label="Siguiente"
+        href="{% if page_obj.has_next %}?page={{ page_obj.next_page_number }}{% endif %}#testimonials">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
