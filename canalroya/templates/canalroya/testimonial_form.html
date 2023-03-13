@@ -56,13 +56,25 @@
 <script>
   $(function () {
     // scrollTo field with errors (if any)
-    if ($('.is-invalid').length ) {
+    if ($('.is-invalid').length) {
       window.scrollTo({
         top: $('.is-invalid').offset().top,
         left: 0,
         behavior: 'smooth'
       });
     }
+
+    // mark required fields
+    $('#formUpload').find('input, select, textarea').each(function () {
+      if ($(this).prop('required')) {
+        $(this).siblings("label").append(" <span class='text-danger'>*</span>");
+      }
+    });
+
+    $('#formUpload').append(
+      "<p class='mt-5'><span class='text-danger'>*</span> Campos obligatorios.</p>"
+    )
+
   });
 </script>
 {% endblock %}
