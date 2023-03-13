@@ -13,11 +13,10 @@ from canalroya.models import Testimonial, testimonial_image_path
 
 
 def download_from_url(url, file_path):
-    f = tempfile.NamedTemporaryFile(delete=False)
     r = requests.get(url, stream=True)
     if r.ok:
-        print("saving to", f.name)
         with open(file_path, 'wb') as f:
+            print("saving to", f.name)
             for chunk in r.iter_content(chunk_size=1024 * 8):
                 if chunk:
                     f.write(chunk)
@@ -70,7 +69,5 @@ class Command(BaseCommand):
             dst_file = Path(settings.MEDIA_ROOT, testimonial_image_path(instance, filename))
 
             download_from_url(d["image_url"], dst_file)
-
-            with dst_file.open(mode='rb') as f:
-                instance.image = File(f, name=dst_file.name)
-                instance.save()
+            instance.image.name = dst_file.name
+            instance.save()
