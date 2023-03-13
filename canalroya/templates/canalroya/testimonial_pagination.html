@@ -1,6 +1,6 @@
 {% load paginator_tags %}
 
-<nav aria-label="Navegación por las diferentes páginas">
+<nav class="w-auto" aria-label="Navegación por las diferentes páginas">
   <ul class="pagination">
     <li class="page-item {% if not page_obj.has_previous %}disabled{% endif %}">
       <a class="page-link" aria-label="Anterior"
