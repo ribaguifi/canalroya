@@ -22,7 +22,7 @@ class TestimonialForm(forms.ModelForm):
 
     class Meta:
         model = Testimonial
-        fields = ("first_name", "last_name", "profession", "city", "province",
+        fields = ("first_name", "last_name", "email", "profession", "city", "province",
                   "comment", "image", "x", "y", "width", "height")
 
     def __init__(self, *args, **kwargs):
