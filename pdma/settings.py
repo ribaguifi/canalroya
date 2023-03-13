@@ -134,3 +134,6 @@ MEDIA_ROOT = env('MEDIA_ROOT')
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Canal Roya settings
+GOOGLE_ANALYTICS_ID = env('GOOGLE_ANALYTICS_ID', default=None)
