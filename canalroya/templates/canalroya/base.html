@@ -183,16 +183,35 @@
   <!-- ======= Footer ======= -->
   <footer id="footer">
     <div class="container">
-      <div class="copyright">
-        &copy; Copyright <strong><span>Salvemos Canal Roya</span></strong>. Todos los derechos reservados
-      </div>
-      <div class="credits">
-        Desarrollado por <a href="https://santiagolamora.com">Ribaguifi</a> //
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/squadfree-free-bootstrap-template-creative/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      <div class="row justify-content-center">
+        <div class="col-lg-8 mb-3">
+          <div class="copyright">
+            &copy; Copyright <strong><span>Salvemos Canal Roya</span></strong>. Todos los derechos reservados
+          </div>
+          <div class="credits">
+            Desarrollado por <a href="https://santiagolamora.com">Ribaguifi</a> //
+            <!-- All the links in the footer should remain intact. -->
+            <!-- You can delete the links only if you purchased the pro version. -->
+            <!-- Licensing information: https://bootstrapmade.com/license/ -->
+            <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/squadfree-free-bootstrap-template-creative/ -->
+            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+          </div>
+        </div>
+        <div class="col-3 col-lg-2 pt-4 mb-3">
+          <h5>Enlaces</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="{% url 'canalroya:testimonial-new' %}">Inicio</a></li>
+            <li class="mb-2"><a href="{% url 'canalroya:testimonial-new' %}#unirme">Unirme</a></li>
+            <li class="mb-2"><a href="{% url 'canalroya:testimonial-list' %}">Testimonios</a></li>
+          </ul>
+        </div>
+        <div class="col-3 col-lg-2 pt-4 mb-3">
+          <h5>Legal</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="{% url 'canalroya:privacy-policy' %}">Política de Privacidad</a></li>
+            <li class="mb-2"><a href="#cookies-policy">Cookies</a></li>
+          </ul>
+        </div>
       </div>
     </div>
   </footer><!-- End Footer -->
