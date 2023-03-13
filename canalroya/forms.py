@@ -1,7 +1,11 @@
 from typing import Any, Dict
+
 from django import forms
-from canalroya.models import Testimonial
+from django.urls import reverse_lazy
+from django.utils.html import format_html
 from PIL import Image
+
+from canalroya.models import Testimonial
 
 
 class TestimonialForm(forms.ModelForm):
@@ -9,6 +13,8 @@ class TestimonialForm(forms.ModelForm):
     IMAGE_HEIGHT = 490
 
     comment = forms.CharField(max_length=400, widget=forms.widgets.Textarea, help_text="Máximo 400 carácteres")
+    privacy_policy = forms.BooleanField(required=True, label="Política de privacidad (overrided on __init__)")
+
     x = forms.FloatField(widget=forms.HiddenInput())
     y = forms.FloatField(widget=forms.HiddenInput())
     width = forms.FloatField(widget=forms.HiddenInput())
@@ -18,6 +24,13 @@ class TestimonialForm(forms.ModelForm):
         model = Testimonial
         fields = ("first_name", "last_name", "profession", "city", "province",
                   "comment", "image", "x", "y", "width", "height")
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['privacy_policy'].label = format_html(
+            "He leído y acepto la <a target='_blank' href='{}'>política de privacidad</a>.",
+            reverse_lazy("canalroya:privacy-policy")
+        )
 
     def clean(self) -> Dict[str, Any]:
         cleaned_data = super().clean()
