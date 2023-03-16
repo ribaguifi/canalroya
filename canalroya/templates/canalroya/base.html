@@ -17,7 +17,7 @@
   <meta name="msapplication-TileImage" content="{% static 'img/favicon-ms.webp' %}" />
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i|Suez+One:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900italic|Oswald:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900italic' rel='stylesheet' />
 
   <!-- Vendor CSS Files -->
   <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
@@ -34,9 +34,30 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropper/3.1.3/cropper.min.css" />
 
   <style>
+    #header .logo img {
+      box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+      width: 150px;
+      max-height: 120px;
+    }
+
+    #header.header-scrolled .logo img {
+      width: 50px;
+    }
+
     #hero {
-        background: linear-gradient(rgba(55, 142, 181, 0.5), rgba(55, 142, 181, 0.2)), url({% static 'img/canal-roya.webp' %}) top center;
+        background: linear-gradient(rgba(55, 142, 181, 0.5), rgba(55, 142, 181, 0.2)), url({% static 'img/anayet-midi.webp' %}) top center;
         background-size: cover;
+    }
+
+    #hero h1 {
+      font-family: "Suez One", Sans-serif;
+      font-size: 5vw;
+      font-weight: 400;
+      line-height: 0.8em;
+    }
+
+    #hero h2 {
+      font-size: 2vw;
     }
   </style>
 
@@ -69,9 +90,11 @@
     <div class="container d-flex align-items-center justify-content-between position-relative">
 
       <div class="logo">
-        <h1 class="text-light"><a href="{% url 'canalroya:testimonial-new' %}"><span>El Pirineo no se vende</span></a></h1>
+        <!-- <h1 class="text-light"><a href="{% url 'canalroya:testimonial-new' %}"><span>El Pirineo no se vende</span></a></h1> -->
         <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <a href="index.html"><img src="{% static 'assets/img/logo.png' %}" alt="" class="img-fluid"></a>-->
+        <a href="{% url 'canalroya:testimonial-new' %}">
+          <img width="200" height="156" src="{% static 'img/elpirineonosevende-logo.svg' %}" alt="El Pirineo no se vende" class="img-fluid">
+        </a>
       </div>
 
       <nav id="navbar" class="navbar">
@@ -91,7 +114,7 @@
     <div class="hero-container" data-aos="fade-up">
       {% block hero %}
       <h1>Bienvenido/a</h1>
-      <h2>Gracias por defender Canal Roya</h2>
+      <h2>#Salvemoscanalroya</h2>
       <a href="#testimonials" class="btn-get-started scrollto"><i class="bx bx-chevrons-down"></i></a>
       {% endblock %}
     </div>
