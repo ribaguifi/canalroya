@@ -11,5 +11,5 @@ urlpatterns = [
     path('apoyos/', views.TestimonialListView.as_view(), name='testimonial-list'),
     # TODO(@slamora): set proper URL
     path('politica-de-privacidad/', RedirectView.as_view(
-        url='https://salvemoscanalroya.org/politica-de-privacidad/'), name='privacy-policy'),
+        url='https://elpirineonosevende.org/politica-de-privacidad/'), name='privacy-policy'),
 ]

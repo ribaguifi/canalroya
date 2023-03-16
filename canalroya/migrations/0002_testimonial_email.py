@@ -13,7 +13,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='testimonial',
             name='email',
-            field=models.EmailField(default='without-email@salvemoscanalroya.org', max_length=254, verbose_name='Correo electrónico'),
+            field=models.EmailField(default='without-email@elpirineonosevende.org', max_length=254, verbose_name='Correo electrónico'),
             preserve_default=False,
         ),
     ]
