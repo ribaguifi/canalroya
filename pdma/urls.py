@@ -16,11 +16,14 @@ Including another URLconf
 from django.conf import settings
 from django.contrib import admin
 from django.urls import include, path
-
+from django.views.generic import RedirectView
 
 urlpatterns = [
     path('peacemaker/', admin.site.urls),
     path('', include('canalroya.urls')),
+    path('', RedirectView.as_view(
+        pattern_name='canalroya:testimonial-list', permanent=True), name='root_index'),
+    path('go-home/', RedirectView.as_view(url="https://elpirineonosevende.org/"), name='wp-home'),
 ]
 
 
