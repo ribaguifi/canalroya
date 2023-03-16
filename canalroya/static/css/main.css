@@ -1,0 +1,43 @@
+#header .logo img {
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+    width: 120px;
+    max-height: 120px;
+}
+
+#header.header-scrolled .logo img {
+    width: 60px;
+}
+
+#hero {
+    background: url('../img/anayet-midi-md.webp') top center;
+    background-size: cover;
+}
+
+#hero h1 {
+    font-family: "Suez One", Sans-serif;
+    font-size: 10vw;
+    font-weight: 400;
+    line-height: 0.8em;
+}
+
+#hero h2 {
+    font-size: 4vw;
+}
+
+
+@media (min-width: 992px) {
+    #hero {
+        background: url('../img/anayet-midi.webp') top center;
+        background-size: cover;
+    }
+}
+
+@media (min-width: 1200px) {
+    #hero h1 {
+        font-size: 8vw;
+    }
+
+    #hero h2 {
+        font-size: 3.5vw;
+    }
+}
