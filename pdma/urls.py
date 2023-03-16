@@ -19,7 +19,7 @@ from django.urls import include, path
 from django.views.generic import RedirectView
 
 urlpatterns = [
-    path('peacemaker/', admin.site.urls),
+    path('turberes/', admin.site.urls),
     path('', include('canalroya.urls')),
     path('', RedirectView.as_view(
         pattern_name='canalroya:testimonial-list', permanent=True), name='root_index'),
