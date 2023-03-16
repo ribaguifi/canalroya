@@ -66,8 +66,9 @@ class Command(BaseCommand):
             )
 
             filename = d["image_url"].split("/")[-1]
-            dst_file = Path(settings.MEDIA_ROOT, testimonial_image_path(instance, filename))
+            dst_rel_path = testimonial_image_path(instance, filename)
+            dst_file = Path(settings.MEDIA_ROOT, dst_rel_path)
 
             download_from_url(d["image_url"], dst_file)
-            instance.image.name = dst_file.name
+            instance.image.name = dst_rel_path
             instance.save()
