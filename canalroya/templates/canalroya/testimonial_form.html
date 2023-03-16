@@ -1,55 +1,60 @@
 {% extends "canalroya/base.html" %}
 {% load django_bootstrap5 static %}
 
-{% block content %}
-<div class="section-title" data-aos="fade-in" data-aos-delay="100">
-  <h2>Únete</h2>
-  <p>Manifiesta tu apoyo en defensa de Canal Roya.</p>
-</div>
+{% block main %}
+<!-- ======= New Testimonial Section ======= -->
+<section id="unirme" class="services section-bg">
+  <div class="container">
+    <div class="section-title" data-aos="fade-in" data-aos-delay="100">
+      <h2>Únete</h2>
+      <p>Manifiesta tu apoyo en defensa de Canal Roya.</p>
+    </div>
 
-<div class="card p-3" data-aos="fade-up">
-  <div class="card-body">
-    <form id="formUpload" method="post" enctype="multipart/form-data"
-      data-image-width="{{ form.IMAGE_WIDTH }}" data-image-height="{{ form.IMAGE_HEIGHT }}">
-      {% csrf_token %}
-      {% bootstrap_form form %}
+    <div class="card p-3" data-aos="fade-up">
+      <div class="card-body">
+        <form id="formUpload" method="post" enctype="multipart/form-data" data-image-width="{{ form.IMAGE_WIDTH }}"
+          data-image-height="{{ form.IMAGE_HEIGHT }}">
+          {% csrf_token %}
+          {% bootstrap_form form %}
 
-      <button class="btn btn-success" type="submit">Enviar</button>
-      <button class="btn btn-outline-danger" type="reset">Cancelar</button>
+          <button class="btn btn-success" type="submit">Enviar</button>
+          <button class="btn btn-outline-danger" type="reset">Cancelar</button>
 
-    </form>
-  </div>
-</div>
+        </form>
+      </div>
+    </div>
 
 
-<!-- MODAL TO CROP THE IMAGE -->
-<div class="modal fade" id="modalCrop">
-  <div class="modal-dialog modal-xl modal-fullscreen-lg-down">
-      <div class="modal-content">
+    <!-- MODAL TO CROP THE IMAGE -->
+    <div class="modal fade" id="modalCrop">
+      <div class="modal-dialog modal-xl modal-fullscreen-lg-down">
+        <div class="modal-content">
           <div class="modal-header">
-              <h4 class="modal-title">Recortar imagen</h4>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <h4 class="modal-title">Recortar imagen</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-              <img src="" id="image" style="max-width: 100%;">
+            <img src="" id="image" style="max-width: 100%;">
           </div>
           <div class="modal-footer">
-              <div class="btn-group pull-left" role="group">
-                  <button type="button" class="btn btn-default js-zoom-in">
-                      <span class="glyphicon glyphicon-zoom-in"></span>
-                  </button>
-                  <button type="button" class="btn btn-default js-zoom-out">
-                      <span class="glyphicon glyphicon-zoom-out"></span>
-                  </button>
-              </div>
-              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-              <button type="button" class="btn btn-primary js-crop-and-upload">Recortar y subir</button>
+            <div class="btn-group pull-left" role="group">
+              <button type="button" class="btn btn-default js-zoom-in">
+                <span class="glyphicon glyphicon-zoom-in"></span>
+              </button>
+              <button type="button" class="btn btn-default js-zoom-out">
+                <span class="glyphicon glyphicon-zoom-out"></span>
+              </button>
+            </div>
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary js-crop-and-upload">Recortar y subir</button>
           </div>
+        </div>
       </div>
-  </div>
-</div>
+    </div>
 
-{% endblock %}
+  </div>
+</section><!-- End New Testimonial Section -->
+{% endblock main %}
 
 {% block extra_script %}
 <script src="{% static 'js/testimonial-cropper.js' %}"></script>

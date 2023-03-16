@@ -101,7 +101,7 @@
         <ul>
           <li><a class="nav-link scrollto active" href="{% url 'wp-home'%}">Inicio</a></li>
           <li><a class="nav-link scrollto" href="{% url 'canalroya:testimonial-new' %}#unirme">Unirme</a></li>
-          <li><a class="nav-link scrollto" href="{% url 'canalroya:testimonial-list' %}">Testimonios</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'canalroya:testimonial-list' %}#testimonials">Testimonios</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -115,95 +115,15 @@
       {% block hero %}
       <h1>Bienvenido/a</h1>
       <h2>#Salvemoscanalroya</h2>
-      <a href="#testimonials" class="btn-get-started scrollto"><i class="bx bx-chevrons-down"></i></a>
+      <a href="#main" class="btn-get-started scrollto"><i class="bx bx-chevrons-down"></i></a>
       {% endblock %}
     </div>
   </section><!-- End Hero -->
 
   <main id="main">
     {% block main %}
-    <!-- ======= Testimonials Section ======= -->
-    <section id="testimonials" class="testimonials section-bg">
-      <div class="container">
 
-        <div class="section-title" data-aos="fade-in" data-aos-delay="100">
-          <h2>Testimonios</h2>
-          <p>Algunas personas que ya han mostrado su apoyo.</p>
-        </div>
-
-        <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
-          <div class="swiper-wrapper">
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Nos cierran escuelas rurales, nos quitan las ambulancias y destrozan nuestros valles. El Pirineo no se vende, el Pirineo se defiende.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-                <img src="{% static 'img/saul-irigaray.jpeg' %}" class="testimonial-img" alt="">
-                <h3>Saúl Irigaray</h3>
-                <h4>Ilustrador y Montañero. Bielsa y Jaca</h4>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Necesitamos ser conscientes de la realidad a la que nos enfrentamos: cambio climático, agotamiento de recursos... Hoy es el momento de adoptar modelos de desarrollo sostenible, de respetar nuestro entorno, de cuidar nuestras montañas.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-                <img src="{% static 'img/santiago-lamora.jpeg' %}" class="testimonial-img" alt="">
-                <h3>Santiago Lamora</h3>
-                <h4>Ingeniero y Escalador. Villanova y Jaca</h4>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Sólo después que el último árbol sea cortado, sólo después que el último río haya sido envenenado, sólo después que el último pez haya sido atrapado, sólo entonces nos daremos cuenta que no nos podemos comer el dinero
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-                <img src="{% static 'img/silvia-naval.jpeg' %}" class="testimonial-img" alt="">
-                <h3>Silvia Naval</h3>
-                <h4>Profesora de Economía y Esquiadora. Valle de Benasque</h4>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  El mayor tesoro del Pirineo son sus espacios naturales intactos, porque desgraciadamente son un bien escaso en nuestros días. Esos espacios son la razón principal por la que la gente nos visita. Su conservación es vital para todos. No hay beneficios empresariales ni sociales que puedan compensar la pérdida de dicho valor, ni a corto ni a largo plazo.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-                <img src="{% static 'img/pablo-lamora.jpeg' %}" class="testimonial-img" alt="">
-                <h3>Pablo Lamora</h3>
-                <h4>Ganadero Autóctono del Pirineo. Valle de Benasque</h4>
-              </div>
-            </div><!-- End testimonial item -->
-
-          </div>
-          <div class="swiper-pagination"></div>
-        </div>
-
-        <div class="text-center pt-2">
-          <h4><a class="btn btn-outline-success" href="{% url 'canalroya:testimonial-list' %}">Ver otros testimonios.</a></h4>
-        </div>
-
-      </div>
-    </section><!-- End Testimonials Section -->
-
-    <!-- ======= New Testimonial Section ======= -->
-    <section id="unirme" class="services section-bg">
-      <div class="container">
-        {% block content %}{% endblock content %}
-      </div>
-    </section><!-- End New Testimonial Section -->
-  {% endblock main %}
+    {% endblock main %}
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
@@ -228,7 +148,7 @@
           <h5>Enlaces</h5>
           <ul class="list-unstyled">
             <li class="mb-2"><a href="{% url 'wp-home'%}">Inicio</a></li>
-            <li class="mb-2"><a href="{% url 'canalroya:testimonial-new' %}#unirme">Unirme</a></li>
+            <li class="mb-2"><a href="{% url 'canalroya:testimonial-new' %}">Unirme</a></li>
             <li class="mb-2"><a href="{% url 'canalroya:testimonial-list' %}">Testimonios</a></li>
           </ul>
         </div>
