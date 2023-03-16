@@ -1,7 +1,7 @@
 import json
 import os
-import tempfile
 from pathlib import Path
+from urllib.parse import urlparse
 
 import requests
 from django.conf import settings
@@ -65,7 +65,7 @@ class Command(BaseCommand):
                 status=Testimonial.Status.APPROVED,
             )
 
-            filename = d["image_url"].split("/")[-1]
+            filename = urlparse(d["image_url"]).path.split("/")[-1]
             dst_rel_path = testimonial_image_path(instance, filename)
             dst_file = Path(settings.MEDIA_ROOT, dst_rel_path)
 
