@@ -1,19 +1,10 @@
 {% extends "canalroya/base.html" %}
 
 {% block hero %}
-<a href="#testimonials" class="btn-get-started scrollto"><i class="bx bx-chevrons-down"></i></a>
 {% endblock %}
 
 {% block extra_style %}
 <style>
-  .rg-testimonial-intro {
-    text-align: center;
-    color: #54595f;
-    font-family: "Raleway", Sans-serif;
-    font-size: 20px;
-    font-weight: 500;
-  }
-
   .rg-testimonial {
     margin-top: 1.5em;
     text-align: center;
@@ -108,13 +99,8 @@
 </div>
 
 <!-- ======= Testimonials Section ======= -->
-<section id="testimonials" class="testimonials section-bg">
+<section id="testimonials" class="testimonials">
   <div class="container">
-      <p class="rg-testimonial-intro"><strong>Uno de los argumentos que usan los promotores del proyecto para justificar esta
-          brutal agresión a nuestras montañas es que la mayoría de la gente del territorio apoya el proyecto. Nada más lejos
-          de la realidad.</strong> Vecinos de todos los valles junto con Aragón entero, científicos, esquiadores, montañeros y
-        amigos de los Pirineos de todos los rincones… demostramos que no es verdad.</p>
-
       <div class="row">
       {% for obj in object_list %}
         <div class="col-12 col-md-4 rg-testimonial">
