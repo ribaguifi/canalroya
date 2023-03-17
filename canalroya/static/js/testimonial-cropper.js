@@ -50,7 +50,7 @@ $(function () {
         $("#id_y").val(cropData["y"]);
         $("#id_height").val(cropData["height"]);
         $("#id_width").val(cropData["width"]);
-        $("#formUpload").submit();
+        $("#modalCrop").modal("hide");
     });
 
 });
