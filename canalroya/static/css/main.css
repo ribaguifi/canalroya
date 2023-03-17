@@ -43,6 +43,16 @@ h1, h2, h3, h4, h5, h6 {
     background-size: cover;
 }
 
+.testimonial-new #hero {
+    background: url('../img/canalroya-anayet.webp') top center;
+    background-size: cover;
+}
+
+.testimonial-list #hero {
+    background: url('../img/canal-roya-pano.webp') top center;
+    background-size: cover;
+}
+
 #hero h1 {
     font-family: "Suez One", Sans-serif;
     font-size: 10vw;
