@@ -11,7 +11,7 @@ from canalroya.helpers import get_province_choices
 def testimonial_image_path(instance, filename):
     filename_extension = PurePath(filename).suffix.lower()
     full_name_slug = slugify(instance.get_full_name())
-    prefix = instance.created_at.strftime("%Y-%m-%dT%H-%M-%S")
+    prefix = timezone.now().strftime("%Y-%m-%dT%H-%M-%S")
     return f"images/{prefix}-{full_name_slug}{filename_extension}"
 
 
