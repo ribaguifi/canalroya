@@ -39,6 +39,20 @@ h1, h2, h3, h4, h5, h6 {
     text-transform: uppercase;
 }
 
+.navbar-mobile {
+    background: rgba(236, 190, 30, 0.9);
+    text-align: center;
+}
+
+.navbar-mobile a:hover, .navbar-mobile .active, .navbar-mobile li:hover>a {
+    color: #ecbe1e;
+}
+
+.navbar-mobile a, .navbar-mobile a:focus {
+    color: #cea840;
+    display: block;
+}
+
 #hero {
     background: url('../img/anayet-midi-md.webp') top center;
     background-size: cover;
