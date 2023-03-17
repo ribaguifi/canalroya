@@ -28,7 +28,7 @@ class TestimonialThanksView(CanalRoyaContextMixin, TemplateView):
 
 class TestimonialListView(CanalRoyaContextMixin, ListView):
     model = Testimonial
-    paginate_by = 51
+    paginate_by = 33
 
     def get_queryset(self):
         return Testimonial.objects.filter(status=Testimonial.Status.APPROVED).order_by("priority", "created_at")
