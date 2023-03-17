@@ -11,6 +11,10 @@ a:hover {
     color: #ecbe1e;
 }
 
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Suez One", Sans-serif;
+}
+
 #header .logo img {
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
     width: 120px;
@@ -43,6 +47,67 @@ a:hover {
 
 #hero h2 {
     font-size: 4vw;
+}
+
+#pre-footer {
+    background: #447587;
+    color: white;
+    text-align: center;
+}
+
+#pre-footer .logo img.img-fluid {
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+    width: 120px;
+    max-height: 120px;
+}
+
+#pre-footer p {
+    font-family: "Raleway", Sans-serif;
+    font-weight: 600;
+}
+
+#pre-footer .btn.btn-warning {
+    font-family: "Suez One", Sans-serif;
+    font-size: 36px;
+    color: white;
+    background-color: #ecbe1e;
+}
+
+
+#pre-footer .social-links .icon i {
+    background-color: #ecbe1e;
+}
+
+#pre-footer .social-links .icon i,
+#pre-footer .social-share .icon i {
+    display: inline-block;
+    width: 1.8em;
+    height: 1.8em;
+    font-size: 1.6em;
+    line-height: 1.8em;
+    margin-right: 0.25em;
+    color: white;
+    border-radius: 100%;
+}
+
+#pre-footer .social-share .bi-facebook {
+    background-color: #39568c;
+}
+
+#pre-footer .social-share .bi-twitter {
+    background-color: #1399de;
+}
+
+#pre-footer .social-share .bi-whatsapp {
+    background-color:#27bf67;
+}
+
+#pre-footer .social-share .bi-telegram {
+    background-color:#269bd0;
+}
+
+#pre-footer .social-share .bi-envelope {
+    background-color: #d64139;
 }
 
 #footer {

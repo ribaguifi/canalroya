@@ -57,7 +57,7 @@
   ======================================================== -->
 </head>
 
-<body>
+<body class="{{ request.resolver_match.url_name }}">
   <noscript>Cookie Consent by <a href="https://www.privacypolicies.com/" rel="noopener">Privacy Policies website</a></noscript>
 
   <!-- ======= Header ======= -->
@@ -68,7 +68,7 @@
         <!-- <h1 class="text-light"><a href="{% url 'canalroya:testimonial-new' %}"><span>El Pirineo no se vende</span></a></h1> -->
         <!-- Uncomment below if you prefer to use an image logo -->
         <a href="{% url 'canalroya:testimonial-new' %}">
-          <img width="200" height="156" src="{% static 'img/elpirineonosevende-logo.svg' %}" alt="El Pirineo no se vende" class="img-fluid">
+          <img width="300" height="300" src="{% static 'img/elpirineonosevende-logo.svg' %}" alt="El Pirineo no se vende" class="img-fluid">
         </a>
       </div>
 
@@ -100,6 +100,41 @@
 
     {% endblock main %}
   </main><!-- End #main -->
+
+  <!-- ======= Pre-footer ======= -->
+  <section id="pre-footer">
+    <div class="container">
+      <div class="logo mb-3">
+        <img class="img-fluid" width="300" height="300" src="{% static 'img/elpirineonosevende-logo.svg' %}" alt="El Pirineo no se vende">
+      </div>
+      <div class="popular-initiative mb-5">
+        <p>Esto es una iniciativa popular surgida por WhatsApp entre habitantes de los Pirineos y de participación abierta a
+          todo el mundo, de cualquier territorio. No representamos a ningún partido, ni a ninguna asociación ni a ninguna
+          plataforma. Nos representamos a nosotros mismos.</p>
+        <h2>¿TE SUMAS?</h2>
+        <a class="btn btn-warning" href="{% url 'canalroya:testimonial-new' %}">DEJA TU TESTIMONIO &gt;</a>
+      </div>
+
+      <div class="social-links mb-4">
+        <h2>SÍGUENOS EN REDES</h2>
+        <div class="icon">
+          <a class="" href="https://www.facebook.com/elpirineonosevende/" target="_blank" rel="nofollow"><i class="bi bi-facebook"></i></a>
+          <a class="" href="https://www.instagram.com/elpirineonosevende/" target="_blank" rel="nofollow"><i class="bi bi-instagram"></i></a>
+        </div>
+      </div>
+
+      <div class="social-share">
+        <h3>¡COMPARTE LA VOZ<br> DE LA MONTAÑA!</h3>
+        <div class="icon">
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https://testimonios.elpirineonosevende.org/" target="_blank" rel="nofollow noopener"><i class="bi bi-facebook"></i></a>
+          <a href="https://twitter.com/intent/tweet?url=https://testimonios.elpirineonosevende.org/&text=&via=" target="_blank" rel="nofollow noopener"><i class="bi bi-twitter"></i></a>
+          <a href="whatsapp://send?text=https://testimonios.elpirineonosevende.org/" target="_blank" rel="nofollow noopener"><i class="bi bi-whatsapp"></i></a>
+          <a href="https://telegram.me/share/url?url=https://testimonios.elpirineonosevende.org/&text=" target="_blank" rel="nofollow noopener"><i class="bi bi-telegram"></i></a>
+          <a href="mailto:?subject=&body=https://testimonios.elpirineonosevende.org/" target="_blank" rel="nofollow noopener"><i class="bi bi-envelope"></i></a>
+        </div>
+      </div>
+    </div>
+  </section><!-- End Pre-footer -->
 
   <!-- ======= Footer ======= -->
   <footer id="footer">
