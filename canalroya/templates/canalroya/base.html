@@ -104,37 +104,27 @@
   <!-- ======= Footer ======= -->
   <footer id="footer">
     <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-8 mb-3">
-          <div class="copyright">
-            &copy; Copyright <strong><span>El Pirineo no se vende</span></strong>. Todos los derechos reservados
-          </div>
-          <div class="credits">
-            Desarrollado por <a href="https://santiagolamora.com" rel="external nofollow noopener" target="_blank">Ribaguifi</a> //
-            Diseño gráfico por <a href="https://garabatoestudio.com" rel="external nofollow noopener" target="_blank">Garabato Estudio</a><br>
-            <!-- All the links in the footer should remain intact. -->
-            <!-- You can delete the links only if you purchased the pro version. -->
-            <!-- Licensing information: https://bootstrapmade.com/license/ -->
-            <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/squadfree-free-bootstrap-template-creative/ -->
-            Template by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-          </div>
-        </div>
-        <div class="col-3 col-lg-2 pt-4 mb-3">
-          <h5>Enlaces</h5>
-          <ul class="list-unstyled">
-            <li class="mb-2"><a href="{% url 'wp-home'%}">Home</a></li>
-            <li class="mb-2"><a href="{% url 'canalroya:testimonial-new' %}">Unirme</a></li>
-            <li class="mb-2"><a href="{% url 'canalroya:testimonial-list' %}">Testimonios</a></li>
-          </ul>
-        </div>
-        <div class="col-3 col-lg-2 pt-4 mb-3">
-          <h5>Legal</h5>
-          <ul class="list-unstyled">
-            <li class="mb-2"><a href="{% url 'canalroya:privacy-policy' %}">Política de Privacidad</a></li>
-            <li class="mb-2"><a href="#" id="open_preferences_center">Actualizar preferencias de cookies</a></li>
-          </ul>
-        </div>
+
+      <div class="copyright">
+        Gracias a todos/as los/as amigos/as que han animado el hombro para sacar esto adelante y a toda la gente que, sin
+        pensarlo, ha ofrecido su testimonio para lanzar el proyecto.
       </div>
+
+      <div class="credits mt-3">
+        Diseño <a href="https://garabatoestudio.com" rel="external nofollow noopener" target="_blank">Garabato Estudio</a> /
+        Desarrollo <a href="https://santiagolamora.com" rel="external nofollow noopener" target="_blank">Ribaguifi</a><br class="mb-5">
+      </div>
+
+      <div class="w-50 mx-auto mt-4" style="background-color: #ababab; height: 1px"></div>
+      <div class="credits mt-2">
+        <ul class="nav justify-content-center">
+          <li class="nav-item"><a class="nav-link" href="{% url 'canalroya:legal-notice' %}">Aviso legal</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'canalroya:privacy-policy' %}">Política de Privacidad</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'canalroya:cookies-policy' %}">Política de Cookies</a></li>
+          <li class="nav-item"><a class="nav-link" href="#" id="open_preferences_center">Actualizar preferencias de cookies</a></li>
+        </ul>
+      </div>
+
     </div>
   </footer><!-- End Footer -->
 

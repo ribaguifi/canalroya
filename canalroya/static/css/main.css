@@ -1,3 +1,16 @@
+:root {
+--bs-link-color: #cea840;
+--bs-link-hover-color: #ecbe1e;
+}
+
+a {
+    color: #cea840;
+}
+
+a:hover {
+    color: #ecbe1e;
+}
+
 #header .logo img {
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
     width: 120px;
@@ -32,6 +45,10 @@
     font-size: 4vw;
 }
 
+#footer {
+    background: #244251;
+}
+
 #unirme {
     background: #ecbe1e;
 }
@@ -54,7 +71,6 @@
     font-family: "Raleway", Sans-serif;
     font-size: 20px;
     font-weight: 600;
-    text-align: center;
 }
 
 
@@ -82,5 +98,10 @@
     #hero h2.testimonial-form {
         font-size: 2vw;
         text-transform: unset;
+    }
+
+    #footer .copyright {
+        width: 50%;
+        margin: auto;
     }
 }
