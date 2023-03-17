@@ -1,15 +1,21 @@
 {% extends "canalroya/base.html" %}
 {% load django_bootstrap5 static %}
 
+{% block hero %}
+<h1 class="testimonial-form">Únete a la voz <br>de la montaña</h1>
+<h2 class="testimonial-form">#SalvemosCanalRoya</h2>
+<a href="#unete" class="btn-get-started scrollto"><i class="bx bx-chevrons-down"></i></a>
+{% endblock %}
+
 {% block main %}
 <!-- ======= New Testimonial Section ======= -->
 <section id="unirme" class="services section-bg">
   <div class="container">
     <div class="section-title" data-aos="fade-in" data-aos-delay="100">
-      <h2>Únete</h2>
-      <p>Manifiesta tu apoyo en defensa de Canal Roya.</p>
-      <p>Expresa tu opinión sobre el proyecto de <strong>manera respetuosa</strong>.<br>
-        Evita insultos, lenguaje discriminatorio...</p>
+      <h2>Rellena el formulario</h2>
+      <p>Manifiesta tu apoyo en defensa de Canal Roya.<br>
+        Expresa tu opinión sobre el proyecto de <strong>manera respetuosa</strong>.<br>
+        Evita insultos, lenguaje discriminatorio, propaganda política...</p>
       <p>¡Gracias!</p>
     </div>
 
@@ -20,8 +26,10 @@
           {% csrf_token %}
           {% bootstrap_form form %}
 
-          <button class="btn btn-success" type="submit">Enviar</button>
-          <button class="btn btn-outline-danger" type="reset">Cancelar</button>
+          <button class="btn btn-outline-success" type="submit">
+            <i class="bi bi-send"></i>
+            Enviar testimonio
+          </button>
 
         </form>
       </div>
