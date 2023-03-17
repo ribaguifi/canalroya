@@ -70,6 +70,15 @@
     margin-top: -7.5em;
   }
 
+  .active>.page-link, .page-link.active {
+    /* color: var(--bs-pagination-active-color); */
+    /* background-color: var(--bs-pagination-active-bg); */
+    /* border-color: var(--bs-pagination-active-border-color); */
+    color: white;
+    background-color: #ecbe1e;
+    border-color: #ecbe1e;
+  }
+
   @media (min-width: 768px) {
     h1.zz {
       font-size: 75px;
@@ -128,36 +137,4 @@
   </div>
 </section>
 
-<!-- ======= Cta Section ======= -->
-<section id="cta" class="cta">
-  <div class="container aos-init aos-animate" data-aos="zoom-in">
-
-    <div class="text-center">
-      <p>¡Únete a la voz de la montaña!</p>
-      <a class="cta-btn" href="{% url 'canalroya:testimonial-new' %}#unirme">Deja tu testimonio</a>
-    </div>
-
-  </div>
-</section>
-<!-- End Cta Section -->
-
-<!-- ======= Share Section ======= -->
-<section id="share" class="testimonials section-bg">
-  <div class="container">
-    <div class="section-title" data-aos="fade-in" data-aos-delay="100">
-      <h2>Invita a más gente a unirse</h2>
-      <p>Comparte esta web para que otras personas se unan a la defensa de Canal Roya.</p>
-
-      <div class="services mt-5">
-        <div class="icon">
-          <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" target="_blank" rel="nofollow noopener"><i class="bi bi-facebook"></i></a>
-          <a href="https://twitter.com/intent/tweet?url={{ request.build_absolute_uri }}&text=&via=" target="_blank" rel="nofollow noopener"><i class="bi bi-twitter"></i></a>
-          <a href="https://www.linkedin.com/shareArticle?url={{ request.build_absolute_uri }}&title=" target="_blank" rel="nofollow noopener"><i class="bi bi-linkedin"></i></a>
-          <a href="whatsapp://send?text={{ request.build_absolute_uri }}" target="_blank" rel="nofollow noopener"><i class="bi bi-whatsapp"></i></a>
-          <a href="https://telegram.me/share/url?url={{ request.build_absolute_uri }}&text=" target="_blank" rel="nofollow noopener"><i class="bi bi-telegram"></i></a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 {% endblock %}
