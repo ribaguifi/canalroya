@@ -12,7 +12,7 @@ class TestimonialForm(forms.ModelForm):
     IMAGE_WIDTH = 654
     IMAGE_HEIGHT = 490
 
-    comment = forms.CharField(max_length=400, widget=forms.widgets.Textarea, help_text="Máximo 400 carácteres")
+    comment = forms.CharField(max_length=400, label="Comentario", widget=forms.widgets.Textarea, help_text="Máximo 400 carácteres")
     privacy_policy = forms.BooleanField(required=True, label="Política de privacidad (overrided on __init__)")
 
     x = forms.FloatField(widget=forms.HiddenInput())
