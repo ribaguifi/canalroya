@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.contrib import admin, messages
+from django.core.mail import send_mass_mail
 from django.template import Context, Template
 from django.utils.translation import ngettext
 
@@ -20,6 +21,17 @@ class TestimonialAdmin(admin.ModelAdmin):
 
     def mark_as_approved(self, request, queryset):
         self.update_status_to(request, queryset, Testimonial.Status.APPROVED)
+        # notify user that its testimonial has been approved
+        datatuple = []
+        for instance in queryset:
+            message = (
+                'Testimonio aprobado | El Pirineo no se vende',
+                'Tu testimonio ha sido aprobado, gracias por unirte a la voz de la montaña.\n#SalvemosCanalRoya',
+                settings.DEFAULT_FROM_EMAIL,
+                [instance.email]
+            )
+            datatuple.append(message)
+        send_mass_mail(datatuple, fail_silently=True)
 
     def mark_as_incomplete(self, request, queryset):
         self.update_status_to(request, queryset, Testimonial.Status.INCOMPLETE)
