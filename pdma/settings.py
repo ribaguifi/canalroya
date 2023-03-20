@@ -140,5 +140,19 @@ MEDIA_ROOT = env('MEDIA_ROOT')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# Email configuration
+DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL', default='webmaster@localhost')
+
+EMAIL_HOST = env('EMAIL_HOST', default='localhost')
+
+EMAIL_HOST_USER = env('EMAIL_HOST_USER', default='')
+
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD', default='')
+
+EMAIL_PORT = env('EMAIL_PORT', default=25, cast=int)
+
+EMAIL_USE_TLS = env('EMAIL_USE_TLS', default=False, cast=bool)
+
+
 # Canal Roya settings
 GOOGLE_ANALYTICS_ID = env('GOOGLE_ANALYTICS_ID', default=None)

@@ -1,3 +1,6 @@
+from django.core.mail import send_mail
+from django.db.models.functions import Concat
+from django.db.models import CharField, Value
 from typing import Any, Dict
 
 from django.conf import settings
@@ -22,12 +25,28 @@ class TestimonialCreateView(CanalRoyaContextMixin, CreateView):
     form_class = TestimonialForm
     success_url = reverse_lazy('canalroya:testimonial-thanks')
 
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        self.send_email_to_user(form.instance)
+        return response
+
+    def send_email_to_user(self, instance):
+        instance = Testimonial.objects.exclude(email='').first()
+        from_email = settings.DEFAULT_FROM_EMAIL
+        to_emails = [instance.email]
+
+        send_mail(
+            'Testimonio recibido | El Pirineo no se vende',
+            'Gracias por enviar tu testimonio, lo revisaremos y aprobaremos lo antes posible.\n#SalvemosCanalRoya',
+            from_email,
+            to_emails,
+            fail_silently=True,
+        )
 
 class TestimonialThanksView(CanalRoyaContextMixin, TemplateView):
     template_name = "canalroya/testimonial_thanks.html"
 
-from django.db.models.functions import Concat
-from django.db.models import CharField, Value
+
 class TestimonialListView(CanalRoyaContextMixin, ListView):
     model = Testimonial
     paginate_by = 33
@@ -37,8 +56,7 @@ class TestimonialListView(CanalRoyaContextMixin, ListView):
         q = self.clean_search_query()
         if q:
             qs = qs.annotate(
-                fullname=Concat('first_name', Value(" "),
-                                'last_name', output_field=CharField()),
+                fullname=Concat('first_name', Value(" "), 'last_name', output_field=CharField()),
             ).filter(fullname__icontains=q)
 
         self.region = self.clean_region()
@@ -46,7 +64,11 @@ class TestimonialListView(CanalRoyaContextMixin, ListView):
             if self.region == Testimonial.Region.HUESCA:
                 qs = qs.filter(province=Testimonial.Region.HUESCA.label)
             elif self.region == Testimonial.Region.ARAGON:
-                qs = qs.filter(province__in=[Testimonial.Region.HUESCA.label, Testimonial.Region.ZARAGOZA.label, Testimonial.Region.TERUEL.label])
+                qs = qs.filter(province__in=[
+                    Testimonial.Region.HUESCA.label,
+                    Testimonial.Region.ZARAGOZA.label,
+                    Testimonial.Region.TERUEL.label
+                ])
         return qs
 
     def clean_search_query(self):
