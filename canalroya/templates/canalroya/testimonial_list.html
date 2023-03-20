@@ -57,11 +57,21 @@
     border-radius: 10px;
   }
 
-  #testimonials {
+  .testimonials {
     margin-top: -7.5em;
   }
 
-  .active>.page-link, .page-link.active {
+  .counts .count-box i {
+    color: #54595f;
+  }
+
+  .counts .count-box p,
+  .counts .count-box span {
+    color: #21262f;
+  }
+
+  .active>.page-link,
+  .page-link.active {
     /* color: var(--bs-pagination-active-color); */
     /* background-color: var(--bs-pagination-active-bg); */
     /* border-color: var(--bs-pagination-active-border-color); */
@@ -75,7 +85,8 @@
       font-size: 75px;
       top: -2em;
     }
-    #testimonials {
+
+    .testimonials {
       margin-top: -10em;
     }
   }
@@ -85,7 +96,8 @@
       font-size: 111px;
       top: -1.2em;
     }
-    #testimonials {
+
+    .testimonials {
       margin-top: -5em;
     }
   }
@@ -94,31 +106,42 @@
 {% endblock %}
 
 {% block main %}
-<div class="d-flex justify-content-center">
+<div id="testimonials" class="d-flex justify-content-center">
   <h1 class="zz">Somos la voz<br>de la montaña</h1>
 </div>
 
 <!-- ======= Testimonials Section ======= -->
-<section id="testimonials" class="testimonials">
+<section class="testimonials counts">
   <div class="container">
-      <div class="row">
+    <div class="row justify-content-center">
+      <div class="col-md-4 d-md-flex align-items-md-stretch">
+        <div class="count-box">
+          <i class="bi bi-person-bounding-box"></i>
+          <span data-purecounter-start="1" data-purecounter-end="{{ page_obj.paginator.count }}"
+            data-purecounter-duration="1" class="purecounter">{{ page_obj.paginator.count }}</span>
+          <p><strong>Testimonios</strong></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
       {% for obj in object_list %}
-        <div class="col-12 col-md-4 rg-testimonial">
-          <div class="card">
-            <img src="{{ obj.image.url }}" class="card-img-top" alt="{{ obj.get_full_name }}">
-            <div class="card-body">
-              <h5 class="card-title rg-team-member-name">{{ obj.get_full_name }}</h5>
-              <h6 class="rg-team-member-position">{{ obj.profession}}, {{ obj.city }}</h6>
-              <p class="card-text rg-team-text">"{{ obj.comment }}"</p>
-            </div>
+      <div class="col-12 col-md-4 rg-testimonial">
+        <div class="card">
+          <img src="{{ obj.image.url }}" class="card-img-top" alt="{{ obj.get_full_name }}">
+          <div class="card-body">
+            <h5 class="card-title rg-team-member-name">{{ obj.get_full_name }}</h5>
+            <h6 class="rg-team-member-position">{{ obj.profession}}, {{ obj.city }}</h6>
+            <p class="card-text rg-team-text">"{{ obj.comment }}"</p>
           </div>
         </div>
+      </div>
       {% endfor %}
-      </div>
+    </div>
 
-      <div class="mt-5 row justify-content-center">
-        {% include "canalroya/testimonial_pagination.html" %}
-      </div>
+    <div class="mt-5 row justify-content-center">
+      {% include "canalroya/testimonial_pagination.html" %}
+    </div>
 
   </div>
 </section>

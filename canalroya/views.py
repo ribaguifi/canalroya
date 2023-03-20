@@ -1,17 +1,18 @@
 from typing import Any, Dict
+
 from django.conf import settings
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, TemplateView
 
-from canalroya.models import Testimonial
 from canalroya.forms import TestimonialForm
+from canalroya.models import Testimonial
+
 
 class CanalRoyaContextMixin:
     def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
         context = super().get_context_data(**kwargs)
         context.update({
             "ga_id": settings.GOOGLE_ANALYTICS_ID,
-            "testimonial_count": Testimonial.objects.count(),
         })
         return context
 
