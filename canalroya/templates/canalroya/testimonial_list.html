@@ -125,6 +125,17 @@
         <p><strong>Testimonios</strong></p>
       </div>
     </div>
+    <div class="dropdown">
+      <a class="btn btn-outline-warning dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Filtrar por región
+      </a>
+
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <li><a class="dropdown-item" href="{% url 'canalroya:testimonial-list' %}?region=huesca#testimonials">Huesca</a></li>
+        <li><a class="dropdown-item" href="{% url 'canalroya:testimonial-list' %}?region=aragon#testimonials">Aragón</a></li>
+        <li><a class="dropdown-item" href="{% url 'canalroya:testimonial-list' %}#testimonials">Todas las regiones</a></li>
+      </ul>
+    </div>
 
     <div class="row">
       {% for obj in object_list %}

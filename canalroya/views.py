@@ -32,4 +32,17 @@ class TestimonialListView(CanalRoyaContextMixin, ListView):
     paginate_by = 33
 
     def get_queryset(self):
-        return Testimonial.objects.filter(status=Testimonial.Status.APPROVED).order_by("priority", "created_at")
+        qs = Testimonial.objects.filter(status=Testimonial.Status.APPROVED).order_by("priority", "created_at")
+        region = self.clean_region()
+        if region:
+            if region == "huesca":
+                qs = qs.filter(province="Huesca")
+            elif region == "aragon":
+                qs = qs.filter(province__in=["Huesca", "Zaragoza", "Teruel"])
+        return qs
+
+    def clean_region(self):
+        region = self.request.GET.get("region")
+        if region not in ["huesca", "aragon"]:
+            return ""
+        return region
