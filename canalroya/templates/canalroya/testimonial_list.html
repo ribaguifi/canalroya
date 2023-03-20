@@ -42,7 +42,7 @@
   }
 
 
-  h1.zz {
+  h1.page-title {
     font-family: "Suez One", Sans-serif;
     font-size: 33px;
     font-weight: 400;
@@ -59,6 +59,10 @@
 
   .testimonials {
     margin-top: -7.5em;
+  }
+
+  .counts .count-box {
+    width: auto;
   }
 
   .counts .count-box i {
@@ -81,7 +85,7 @@
   }
 
   @media (min-width: 768px) {
-    h1.zz {
+    h1.page-title {
       font-size: 75px;
       top: -2em;
     }
@@ -92,7 +96,7 @@
   }
 
   @media (min-width: 1200px) {
-    h1.zz {
+    h1.page-title {
       font-size: 111px;
       top: -1.2em;
     }
@@ -107,20 +111,18 @@
 
 {% block main %}
 <div id="testimonials" class="d-flex justify-content-center">
-  <h1 class="zz">Somos la voz<br>de la montaña</h1>
+  <h1 class="page-title">Somos la voz<br>de la montaña</h1>
 </div>
 
 <!-- ======= Testimonials Section ======= -->
 <section class="testimonials counts">
   <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-md-4 d-md-flex align-items-md-stretch">
-        <div class="count-box">
-          <i class="bi bi-person-bounding-box"></i>
-          <span data-purecounter-start="1" data-purecounter-end="{{ page_obj.paginator.count }}"
-            data-purecounter-duration="1" class="purecounter">{{ page_obj.paginator.count }}</span>
-          <p><strong>Testimonios</strong></p>
-        </div>
+    <div class="d-flex justify-content-center">
+      <div class="count-box">
+        <i class="bi bi-person-bounding-box"></i>
+        <span data-purecounter-start="1" data-purecounter-end="{{ page_obj.paginator.count }}"
+          data-purecounter-duration="1" class="purecounter">{{ page_obj.paginator.count }}</span>
+        <p><strong>Testimonios</strong></p>
       </div>
     </div>
 
