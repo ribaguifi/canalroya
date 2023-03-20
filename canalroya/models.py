@@ -37,7 +37,7 @@ class Testimonial(models.Model):
     city = models.CharField('Localidad', max_length=50)
     province = models.CharField('Provincia', max_length=50, choices=get_province_choices())
     comment = models.TextField('Comentarios')
-    image = models.ImageField('Foto', upload_to=testimonial_image_path)
+    image = models.ImageField('Foto personal (tipo autorretrato)', upload_to=testimonial_image_path, help_text="Utiliza una foto en la que aparezcas tú. No se aprobarán los testimonios con fotos de paisajes, ni memes, etc.")
 
     created_at = models.DateTimeField(_('created at'), auto_now_add=True)
     updated_at = models.DateTimeField(_('updated at'), auto_now=True)
