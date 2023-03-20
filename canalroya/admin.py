@@ -8,6 +8,7 @@ class TestimonialAdmin(admin.ModelAdmin):
     actions = ['mark_as_approved', 'mark_as_incomplete', 'mark_as_pending', 'mark_as_spam', 'send_to_trash']
     list_display = ("get_full_name", "priority", "status", "created_at", "city", "province", "comment")
     list_filter = ("status", "province")
+    search_fields = ['first_name', 'last_name', 'email']
 
     def mark_as_approved(self, request, queryset):
         self.update_status_to(request, queryset, Testimonial.Status.APPROVED)
