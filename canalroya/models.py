@@ -16,6 +16,13 @@ def testimonial_image_path(instance, filename):
 
 
 class Testimonial(models.Model):
+    class Region(models.TextChoices):
+        HUESCA = "huesca", "Huesca"
+        ZARAGOZA = "zaragoza", "Zaragoza"
+        TERUEL = "teruel", "Teruel"
+        ARAGON = "aragon", "Aragón"
+        ALL = "", "Todas las regiones"
+
     class Status(models.IntegerChoices):
         PENDING = 1
         APPROVED = 2

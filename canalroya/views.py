@@ -33,12 +33,12 @@ class TestimonialListView(CanalRoyaContextMixin, ListView):
 
     def get_queryset(self):
         qs = Testimonial.objects.filter(status=Testimonial.Status.APPROVED).order_by("priority", "created_at")
-        region = self.clean_region()
-        if region:
-            if region == "huesca":
-                qs = qs.filter(province="Huesca")
-            elif region == "aragon":
-                qs = qs.filter(province__in=["Huesca", "Zaragoza", "Teruel"])
+        self.region = self.clean_region()
+        if self.region:
+            if self.region == Testimonial.Region.HUESCA:
+                qs = qs.filter(province=Testimonial.Region.HUESCA.label)
+            elif self.region == Testimonial.Region.ARAGON:
+                qs = qs.filter(province__in=[Testimonial.Region.HUESCA.label, Testimonial.Region.ZARAGOZA.label, Testimonial.Region.TERUEL.label])
         return qs
 
     def clean_region(self):
@@ -46,3 +46,8 @@ class TestimonialListView(CanalRoyaContextMixin, ListView):
         if region not in ["huesca", "aragon"]:
             return ""
         return region
+
+    def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
+        context = super().get_context_data(**kwargs)
+        context["region_name"] = Testimonial.Region(self.region).label
+        return context
