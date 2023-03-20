@@ -4,7 +4,7 @@
   <ul class="pagination">
     <li class="page-item {% if not page_obj.has_previous %}disabled{% endif %}">
       <a class="page-link" aria-label="Anterior"
-        href="{% if page_obj.has_previous %}?page={{ page_obj.previous_page_number }}&region={{ request.GET.region }}{% endif %}#testimonials-content">
+        href="{% if page_obj.has_previous %}?{% url_replace page=page_obj.previous_page_number %}{% endif %}#testimonials-content">
         <span aria-hidden="true">&laquo;</span>
       </a>
     </li>
@@ -17,14 +17,14 @@
         {% if i == page_obj.paginator.ELLIPSIS %}
           <li class="page-item"><span class="page-link">{{ page_obj.paginator.ELLIPSIS }}</span></li>
         {% else %}
-          <li class="page-item"><a class="page-link" href="?page={{ i }}&region={{ request.GET.region }}#testimonials-content">{{ i }}</a></li>
+          <li class="page-item"><a class="page-link" href="?{% url_replace page=i %}#testimonials-content">{{ i }}</a></li>
         {% endif %}
       {% endif %}
     {% endfor %}
 
     <li class="page-item {% if not page_obj.has_next %}disabled{% endif %}">
       <a class="page-link" aria-label="Siguiente"
-        href="{% if page_obj.has_next %}?page={{ page_obj.next_page_number }}&region={{ request.GET.region }}{% endif %}#testimonials-content">
+        href="{% if page_obj.has_next %}?{% url_replace page=page_obj.next_page_number %}{% endif %}#testimonials-content">
         <span aria-hidden="true">&raquo;</span>
       </a>
     </li>
