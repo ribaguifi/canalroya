@@ -121,8 +121,8 @@
     <div class="row justify-content-end">
 
 
-      <div class="col-auto col-md-4">
-        <div class="count-box pt-0">
+      <div class="col-auto col-md-5 col-lg-3">
+        <div class="count-box pt-0 ps-0">
           <i class="bi bi-person-bounding-box"></i>
           <span data-purecounter-start="0" data-purecounter-end="{{ page_obj.paginator.count }}"
             data-purecounter-duration="1" class="purecounter">{{ page_obj.paginator.count }}</span>
@@ -130,7 +130,17 @@
         </div>
       </div>
 
-      <div class="col-auto col-md-4 text-end">
+      <div class="col-auto col-md-7 col-lg-5 text-end d-flex justify-content-end">
+        <form method="get">
+          <div class="me-3">
+            <div class="input-group">
+              <input type="text" class="form-control" id="floatingInput" name="q" placeholder="Buscar"
+              aria-label="Buscar testimonios" value="{{ request.GET.q }}">
+
+              <button class="btn btn-outline-warning" type="submit"><i class="bi bi-search"></i></button>
+            </div>
+          </div>
+        </form>
         <div class="dropdown">
           <a class="btn btn-warning dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
             aria-expanded="false">
