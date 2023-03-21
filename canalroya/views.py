@@ -3,12 +3,12 @@ from typing import Any, Dict
 from django.conf import settings
 from django.core.mail import send_mail
 from django.db.models import CharField, Value
-from django.db.models.functions import MD5, Cast, Concat
+from django.db.models.functions import Concat
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, TemplateView, UpdateView
 
 from canalroya.forms import TestimonialForm
-from canalroya.models import Testimonial
+from canalroya.models import Testimonial, annotate_ephemeral_slug
 
 
 class CanalRoyaContextMixin:
@@ -65,12 +65,7 @@ class TestimonialUpdateView(CanalRoyaContextMixin, UpdateView):
         the object is updated.
         """
         qs = Testimonial.objects.filter(status=Testimonial.Status.INCOMPLETE)
-        qs = qs.annotate(slug=MD5(
-            Concat(
-                Cast('pk', output_field=CharField()),
-                Cast('updated_at', output_field=CharField()),
-            )
-        ))
+        qs = annotate_ephemeral_slug(qs)
         return qs
 
     def form_valid(self, form):

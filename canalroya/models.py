@@ -1,11 +1,22 @@
 from pathlib import PurePath
 
 from django.db import models
+from django.db.models import CharField
+from django.db.models.functions import MD5, Cast, Concat
 from django.utils import timezone
-from django.utils.translation import gettext_lazy as _
 from django.utils.text import slugify
+from django.utils.translation import gettext_lazy as _
 
 from canalroya.helpers import get_province_choices
+
+
+def annotate_ephemeral_slug(queryset):
+    return queryset.annotate(slug=MD5(
+        Concat(
+            Cast('pk', output_field=CharField()),
+            Cast('updated_at', output_field=CharField()),
+        )
+    ))
 
 
 def testimonial_image_path(instance, filename):
@@ -37,7 +48,9 @@ class Testimonial(models.Model):
     city = models.CharField('Localidad', max_length=50)
     province = models.CharField('Provincia', max_length=50, choices=get_province_choices())
     comment = models.TextField('Comentarios')
-    image = models.ImageField('Foto personal (tipo autorretrato)', upload_to=testimonial_image_path, help_text="Utiliza una foto en la que aparezcas tú. No se aprobarán los testimonios con fotos de paisajes, ni memes, etc.")
+    image = models.ImageField('Foto personal (tipo autorretrato)', upload_to=testimonial_image_path,
+                              help_text=("Utiliza una foto en la que aparezcas tú. No se aprobarán "
+                                         "los testimonios con fotos de paisajes, ni memes, etc."))
 
     created_at = models.DateTimeField(_('created at'), auto_now_add=True)
     updated_at = models.DateTimeField(_('updated at'), auto_now=True)
