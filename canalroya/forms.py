@@ -12,7 +12,8 @@ class TestimonialForm(forms.ModelForm):
     IMAGE_WIDTH = 654
     IMAGE_HEIGHT = 490
 
-    comment = forms.CharField(max_length=400, label="Comentario", widget=forms.widgets.Textarea, help_text="Máximo 400 carácteres")
+    comment = forms.CharField(max_length=400, label="Comentario",
+                              widget=forms.widgets.Textarea, help_text="Máximo 400 carácteres")
     privacy_policy = forms.BooleanField(required=True, label="Política de privacidad (overrided on __init__)")
 
     x = forms.FloatField(widget=forms.HiddenInput())
@@ -36,23 +37,30 @@ class TestimonialForm(forms.ModelForm):
     def clean(self) -> Dict[str, Any]:
         cleaned_data = super().clean()
         crop_fields = ["x", "y", "width", "height"]
-        for fieldname in crop_fields:
-            if fieldname not in cleaned_data:
-                self.add_error("image", "Por favor, recorta la imagen para ajustar su tamaño.")
-                break
+        if "image" in self.changed_data:
+            for fieldname in crop_fields:
+                if fieldname not in cleaned_data:
+                    self.add_error("image", "Por favor, recorta la imagen para ajustar su tamaño.")
+                    break
+        elif self.instance.pk:
+            # crop fields are not required because image is not updated
+            for fieldname in crop_fields:
+                self.errors.pop(fieldname, None)
+
         return cleaned_data
 
     def save(self):
         instance = super().save()
 
-        x = self.cleaned_data.get('x')
-        y = self.cleaned_data.get('y')
-        w = self.cleaned_data.get('width')
-        h = self.cleaned_data.get('height')
+        if "image" in self.changed_data:
+            x = self.cleaned_data['x']
+            y = self.cleaned_data['y']
+            w = self.cleaned_data['width']
+            h = self.cleaned_data['height']
 
-        image = Image.open(instance.image)
-        cropped_image = image.crop((x, y, w+x, h+y))
-        resized_image = cropped_image.resize((self.IMAGE_WIDTH, self.IMAGE_HEIGHT), Image.ANTIALIAS)
-        resized_image.save(instance.image.path)
+            image = Image.open(instance.image)
+            cropped_image = image.crop((x, y, w+x, h+y))
+            resized_image = cropped_image.resize((self.IMAGE_WIDTH, self.IMAGE_HEIGHT), Image.ANTIALIAS)
+            resized_image.save(instance.image.path)
 
         return instance

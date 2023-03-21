@@ -1,11 +1,11 @@
-from django.core.mail import send_mail
-from django.db.models.functions import Concat
-from django.db.models import CharField, Value
 from typing import Any, Dict
 
 from django.conf import settings
+from django.core.mail import send_mail
+from django.db.models import CharField, Value
+from django.db.models.functions import MD5, Cast, Concat
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, ListView, UpdateView, TemplateView
+from django.views.generic import CreateView, ListView, TemplateView, UpdateView
 
 from canalroya.forms import TestimonialForm
 from canalroya.models import Testimonial
@@ -25,7 +25,8 @@ class CounterIframeView(TemplateView):
 
     def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
         context = super().get_context_data(**kwargs)
-        context["count"] = Testimonial.objects.filter(status=Testimonial.Status.APPROVED).count()
+        context["count"] = Testimonial.objects.filter(
+            status=Testimonial.Status.APPROVED).count()
         return context
 
 
@@ -50,6 +51,34 @@ class TestimonialCreateView(CanalRoyaContextMixin, CreateView):
             to_emails,
             fail_silently=True,
         )
+
+
+class TestimonialUpdateView(CanalRoyaContextMixin, UpdateView):
+    model = Testimonial
+    form_class = TestimonialForm
+    success_url = reverse_lazy('canalroya:testimonial-thanks')
+
+    def get_queryset(self):
+        """
+        Annotate md5 and use it as slug retrieve objects using it
+        NOTE: as updated_at is used on md5 link will be expire when
+        the object is updated.
+        """
+        qs = Testimonial.objects.filter(status=Testimonial.Status.INCOMPLETE)
+        qs = qs.annotate(slug=MD5(
+            Concat(
+                Cast('pk', output_field=CharField()),
+                Cast('updated_at', output_field=CharField()),
+            )
+        ))
+        return qs
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        form.instance.status = Testimonial.Status.PENDING
+        form.instance.save()
+        return response
+
 
 class TestimonialThanksView(CanalRoyaContextMixin, TemplateView):
     template_name = "canalroya/testimonial_thanks.html"
