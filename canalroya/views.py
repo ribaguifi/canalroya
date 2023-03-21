@@ -20,6 +20,15 @@ class CanalRoyaContextMixin:
         return context
 
 
+class CounterIframeView(TemplateView):
+    template_name = "canalroya/counter_iframe.html"
+
+    def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
+        context = super().get_context_data(**kwargs)
+        context["count"] = Testimonial.objects.filter(status=Testimonial.Status.APPROVED).count()
+        return context
+
+
 class TestimonialCreateView(CanalRoyaContextMixin, CreateView):
     model = Testimonial
     form_class = TestimonialForm
