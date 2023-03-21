@@ -31,7 +31,6 @@ class TestimonialCreateView(CanalRoyaContextMixin, CreateView):
         return response
 
     def send_email_to_user(self, instance):
-        instance = Testimonial.objects.exclude(email='').first()
         from_email = settings.DEFAULT_FROM_EMAIL
         to_emails = [instance.email]
 
