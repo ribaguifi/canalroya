@@ -153,6 +153,10 @@ EMAIL_PORT = env('EMAIL_PORT', default=25, cast=int)
 
 EMAIL_USE_TLS = env('EMAIL_USE_TLS', default=False, cast=bool)
 
+EMAIL_USE_SSL = env('EMAIL_USE_SSL', default=False, cast=bool)
+
+EMAIL_TIMEOUT = 5
+
 
 # Canal Roya settings
 GOOGLE_ANALYTICS_ID = env('GOOGLE_ANALYTICS_ID', default=None)
