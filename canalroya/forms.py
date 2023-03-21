@@ -28,7 +28,8 @@ class TestimonialForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['privacy_policy'].label = format_html(
-            "He leído y acepto la <a target='_blank' href='{}'>política de privacidad</a>.",
+            ("He leído y acepto la <a target='_blank' href='{}'>política de privacidad</a> "
+             "y declaro que aporto mi testimonio por voluntad propia y con total libertad."),
             reverse_lazy("canalroya:privacy-policy")
         )
 
