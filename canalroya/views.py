@@ -44,9 +44,13 @@ class TestimonialCreateView(CanalRoyaContextMixin, CreateView):
         from_email = settings.DEFAULT_FROM_EMAIL
         to_emails = [instance.email]
 
+        path = reverse_lazy("canalroya:testimonial-detail", kwargs={"slug": instance.generate_slug()})
+        url = self.request.build_absolute_uri(path)
+
         send_mail(
             'Testimonio recibido | El Pirineo no se vende',
-            'Gracias por enviar tu testimonio, lo revisaremos y aprobaremos lo antes posible.\n#SalvemosCanalRoya',
+            ('Gracias por enviar tu testimonio.\nPuedes ver una vista previa aquí {}\n'
+             ' lo revisaremos y aprobaremos lo antes posible.\n\n#SalvemosCanalRoya'.format(url)),
             from_email,
             to_emails,
             fail_silently=True,

@@ -71,3 +71,8 @@ class Testimonial(models.Model):
         """
         full_name = '%s %s' % (self.first_name, self.last_name)
         return full_name.strip()
+
+    def generate_slug(self):
+        from canalroya.utils import annotate_ephemeral_slug
+        qs = annotate_ephemeral_slug(Testimonial.objects.filter(pk=self.pk))
+        return qs.get().slug
