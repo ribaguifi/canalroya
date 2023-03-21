@@ -1,0 +1,32 @@
+{% extends "canalroya/testimonial_list.html" %}
+{% block main %}
+<div id="testimonials" class="d-flex justify-content-center">
+  <h1 class="page-title">Somos la voz<br>de la montaña</h1>
+</div>
+
+
+<!-- ======= Testimonials Section ======= -->
+<section id="testimonials-content" class="testimonials counts">
+  <div class="container">
+    <p class="text-center">
+      Aquí puedes ver cómo ha quedado tu testimonio.<br>
+      En caso de que haya algún error <a href="{% url 'canalroya:testimonial-update' object.slug %}#unirme">pulsa aquí para editarlo</a>.<br>
+      <strong>IMPORTANTE: sólo estará activo el enlace unos minutos</strong></p>
+    <div class="row justify-content-center">
+      {% with object as obj %}
+      <div class="col-12 col-md-4 rg-testimonial">
+        <div class="card">
+          <img src="{{ obj.image.url }}" class="card-img-top" alt="{{ obj.get_full_name }}">
+          <div class="card-body">
+            <h5 class="card-title rg-team-member-name">{{ obj.get_full_name }}</h5>
+            <h6 class="rg-team-member-position">{{ obj.profession}}, {{ obj.city }}</h6>
+            <p class="card-text rg-team-text">"{{ obj.comment }}"</p>
+          </div>
+        </div>
+      </div>
+      {% endwith %}
+    </div>
+  </div>
+
+</section>
+{% endblock %}

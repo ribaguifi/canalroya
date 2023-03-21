@@ -30,7 +30,7 @@ def submit_incomplete_email(queryset):
     datatuple = []
     queryset = annotate_ephemeral_slug(queryset)
     for instance in queryset:
-        update_url = reverse("canalroya:testimonial-incomplete-update", kwargs={"slug": instance.slug})
+        update_url = reverse("canalroya:testimonial-update", kwargs={"slug": instance.slug})
         message = (
             'Testimonio incompleto | El Pirineo no se vende',
             EMAIL_BODY.format(name=instance.first_name, url=update_url),

@@ -5,7 +5,7 @@ from django.core.mail import send_mail
 from django.db.models import CharField, Value
 from django.db.models.functions import Concat
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, ListView, TemplateView, UpdateView
+from django.views.generic import CreateView, DetailView, ListView, TemplateView, UpdateView
 
 from canalroya.forms import TestimonialForm
 from canalroya.models import Testimonial, annotate_ephemeral_slug
@@ -53,6 +53,20 @@ class TestimonialCreateView(CanalRoyaContextMixin, CreateView):
         )
 
 
+class TestimonialEphemeralDetailView(CanalRoyaContextMixin, DetailView):
+    model = Testimonial
+
+    def get_queryset(self):
+        """
+        Annotate md5 and use it as slug retrieve objects using it
+        NOTE: as updated_at is used on md5 link will be expire when
+        the object is updated.
+        """
+        qs = Testimonial.objects.filter(status__in=[Testimonial.Status.INCOMPLETE, Testimonial.Status.PENDING])
+        qs = annotate_ephemeral_slug(qs)
+        return qs
+
+
 class TestimonialUpdateView(CanalRoyaContextMixin, UpdateView):
     model = Testimonial
     form_class = TestimonialForm
@@ -64,7 +78,7 @@ class TestimonialUpdateView(CanalRoyaContextMixin, UpdateView):
         NOTE: as updated_at is used on md5 link will be expire when
         the object is updated.
         """
-        qs = Testimonial.objects.filter(status=Testimonial.Status.INCOMPLETE)
+        qs = Testimonial.objects.filter(status__in=[Testimonial.Status.INCOMPLETE, Testimonial.Status.PENDING])
         qs = annotate_ephemeral_slug(qs)
         return qs
 
