@@ -9,7 +9,8 @@ urlpatterns = [
     path('unirme/', views.TestimonialCreateView.as_view(), name='testimonial-new'),
     path('gracias/', views.TestimonialThanksView.as_view(), name='testimonial-thanks'),
     path('la-voz-de-la-montana/', views.TestimonialListView.as_view(), name='testimonial-list'),
-    path('testimonios/<slug:slug>/editar/', views.TestimonialUpdateView.as_view(), name='testimonial-update'),
+    path('testimonios/<slug:slug>/editar/', views.TestimonialUpdateView.as_view(),
+         name='testimonial-incomplete-update'),
 
     path('counter-iframe/', views.CounterIframeView.as_view(), name='counter-iframe'),
 
