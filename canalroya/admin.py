@@ -2,15 +2,17 @@ from django.conf import settings
 from django.contrib import admin, messages
 from django.core.mail import send_mass_mail
 from django.template import Context, Template
+from django.urls import reverse
+from django.utils.html import format_html
 from django.utils.translation import ngettext
 
-from canalroya.models import Testimonial
+from canalroya.models import Testimonial, annotate_ephemeral_slug
 
 
 class TestimonialAdmin(admin.ModelAdmin):
     actions = ['mark_as_approved', 'mark_as_incomplete', 'mark_as_pending', 'mark_as_spam', 'send_to_trash']
     list_display = ("get_full_name", "priority", "status", "email", "get_created_at",
-                    "get_updated_at", "city", "province", "comment")
+                    "get_updated_at", "city", "province", "comment", "get_update_link")
     list_filter = ("status", "province")
     search_fields = ['first_name', 'last_name', 'email']
 
@@ -25,6 +27,22 @@ class TestimonialAdmin(admin.ModelAdmin):
         return Template("{{ updated_at|date:'SHORT_DATETIME_FORMAT' }}").render(c)
     get_updated_at.admin_order_field = "updated_at"
     get_updated_at.short_description = "Updated at"
+
+    def get_update_link(self, obj):
+        if obj.status in [Testimonial.Status.INCOMPLETE, Testimonial.Status.PENDING]:
+            path = reverse("canalroya:testimonial-update", kwargs={"slug": obj.slug})
+            url = self.request.build_absolute_uri(path)
+            return format_html("<p style='text-align:center;'><a href='{}' target='blank'><img alt='public update link'"
+                               "src='/static/admin/img/icon-viewlink.svg'></a></p>", url)
+        return format_html("<p style='text-align:center;'>-</p>")
+    get_update_link.short_description = format_html("<span title='Comparte este link con el autor para que pueda hacer"
+                                                    " correcciones.' style='cursor:help;'>link <img "
+                                                    "src='/static/admin/img/icon-unknown.svg'></span>")
+
+    def get_queryset(self, request):
+        self.request = request
+        qs = super().get_queryset(request)
+        return annotate_ephemeral_slug(qs)
 
     def mark_as_approved(self, request, queryset):
         self.update_status_to(request, queryset, Testimonial.Status.APPROVED)
