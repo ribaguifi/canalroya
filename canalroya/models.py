@@ -11,6 +11,11 @@ from canalroya.helpers import get_province_choices
 
 
 def annotate_ephemeral_slug(queryset):
+    """
+    Annotate md5 and use it as slug retrieve objects using it
+    NOTE: as updated_at is used on md5 link will be expire when
+    the object is updated.
+    """
     return queryset.annotate(slug=MD5(
         Concat(
             Cast('pk', output_field=CharField()),

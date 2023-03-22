@@ -7,11 +7,12 @@
 
 <!-- ======= Testimonials Section ======= -->
 <section id="testimonials-content" class="testimonials counts">
-  <div class="container">
-    <p class="text-center">
-      Aquí puedes ver cómo ha quedado tu testimonio.<br>
-      En caso de que haya algún error <a href="{% url 'canalroya:testimonial-update' object.slug %}#unirme">pulsa aquí para editarlo</a>.<br>
-      <strong>IMPORTANTE: sólo estará activo el enlace unos minutos</strong></p>
+  <div class="container text-center">
+    <h2>VISTA PREVIA</h2>
+    <p>
+      Aquí puedes ver cómo se verá tu testimonio una vez publicado.<br>
+      En caso de que haya algún error <a href="{% url 'canalroya:testimonial-update' object.slug %}#unirme">pulsa aquí para editarlo</a>
+    </p>
     <div class="row justify-content-center">
       {% with object as obj %}
       <div class="col-12 col-md-4 rg-testimonial">
@@ -26,7 +27,23 @@
       </div>
       {% endwith %}
     </div>
-    <h5 class="mt-4 text-center">Esta página es privada y sólo deberías acceder tú.<br> Por favor, no la compartas.</h5>
+    <div class="mt-4">
+      <h6>{{object.status  }} {{ object.Status.DRAFT }}</h6>
+      <a class="btn btn-outline-warning" href="{% url 'canalroya:testimonial-update' object.slug %}#unirme">Editar</a>
+      {% if object.status == object.Status.DRAFT %}
+      <form method="post" class="d-inline">
+        {% csrf_token %}
+        <div class="d-none">
+          {{ form }}
+        </div>
+        <button class="ms-3 btn btn-outline-success" type="submit">
+          <i class="bi bi-send"></i>
+          Enviar testimonio
+        </button>
+      </form>
+      {% endif %}
+    </div>
+    <h5 class="mt-4">Esta página es privada y sólo deberías acceder tú.<br> Por favor, no la compartas.</h5>
   </div>
 
 </section>

@@ -4,8 +4,9 @@ from django.conf import settings
 from django.core.mail import send_mail
 from django.db.models import CharField, Value
 from django.db.models.functions import Concat
-from django.urls import reverse_lazy
-from django.views.generic import CreateView, DetailView, ListView, TemplateView, UpdateView
+from django.http import HttpResponseRedirect
+from django.urls import reverse, reverse_lazy
+from django.views.generic import CreateView, ListView, TemplateView, UpdateView
 
 from canalroya.forms import TestimonialForm
 from canalroya.models import Testimonial, annotate_ephemeral_slug
@@ -33,10 +34,32 @@ class CounterIframeView(TemplateView):
 class TestimonialCreateView(CanalRoyaContextMixin, CreateView):
     model = Testimonial
     form_class = TestimonialForm
+
+    def form_valid(self, form):
+        form.instance.status = Testimonial.Status.DRAFT
+        self.object = form.save()
+        return HttpResponseRedirect(self.get_success_url())
+
+    def get_success_url(self):
+        return reverse('canalroya:testimonial-preview', kwargs={"slug": self.object.generate_slug()}) + "#testimonials-content"
+
+
+class TestimonialPreviewView(CanalRoyaContextMixin, UpdateView):
+    model = Testimonial
+    fields = ["status"]
+    template_name = "canalroya/testimonial_detail.html"
     success_url = reverse_lazy('canalroya:testimonial-thanks')
+
+    def get_queryset(self):
+        editable_status = [Testimonial.Status.DRAFT, Testimonial.Status.INCOMPLETE, Testimonial.Status.PENDING]
+        qs = Testimonial.objects.filter(status__in=editable_status)
+        qs = annotate_ephemeral_slug(qs)
+        return qs
 
     def form_valid(self, form):
         response = super().form_valid(form)
+        form.instance.status = Testimonial.Status.PENDING
+        form.instance.save()
         self.send_email_to_user(form.instance)
         return response
 
@@ -44,7 +67,7 @@ class TestimonialCreateView(CanalRoyaContextMixin, CreateView):
         from_email = settings.DEFAULT_FROM_EMAIL
         to_emails = [instance.email]
 
-        path = reverse_lazy("canalroya:testimonial-detail", kwargs={"slug": instance.generate_slug()})
+        path = reverse_lazy("canalroya:testimonial-preview", kwargs={"slug": instance.generate_slug()})
         url = self.request.build_absolute_uri(path)
 
         send_mail(
@@ -57,40 +80,23 @@ class TestimonialCreateView(CanalRoyaContextMixin, CreateView):
         )
 
 
-class TestimonialEphemeralDetailView(CanalRoyaContextMixin, DetailView):
-    model = Testimonial
-
-    def get_queryset(self):
-        """
-        Annotate md5 and use it as slug retrieve objects using it
-        NOTE: as updated_at is used on md5 link will be expire when
-        the object is updated.
-        """
-        qs = Testimonial.objects.filter(status__in=[Testimonial.Status.INCOMPLETE, Testimonial.Status.PENDING])
-        qs = annotate_ephemeral_slug(qs)
-        return qs
-
-
 class TestimonialUpdateView(CanalRoyaContextMixin, UpdateView):
     model = Testimonial
     form_class = TestimonialForm
-    success_url = reverse_lazy('canalroya:testimonial-thanks')
 
     def get_queryset(self):
-        """
-        Annotate md5 and use it as slug retrieve objects using it
-        NOTE: as updated_at is used on md5 link will be expire when
-        the object is updated.
-        """
-        qs = Testimonial.objects.filter(status__in=[Testimonial.Status.INCOMPLETE, Testimonial.Status.PENDING])
+        editable_status = [Testimonial.Status.DRAFT, Testimonial.Status.INCOMPLETE, Testimonial.Status.PENDING]
+        qs = Testimonial.objects.filter(status__in=editable_status)
         qs = annotate_ephemeral_slug(qs)
         return qs
 
     def form_valid(self, form):
-        response = super().form_valid(form)
-        form.instance.status = Testimonial.Status.PENDING
-        form.instance.save()
-        return response
+        form.instance.status = Testimonial.Status.DRAFT
+        self.object = form.save()
+        return HttpResponseRedirect(self.get_success_url())
+
+    def get_success_url(self):
+        return reverse('canalroya:testimonial-preview', kwargs={"slug": self.object.generate_slug()}) + "#testimonials-content"
 
 
 class TestimonialThanksView(CanalRoyaContextMixin, TemplateView):
