@@ -32,6 +32,7 @@ class Testimonial(models.Model):
         ZARAGOZA = "zaragoza", "Zaragoza"
         TERUEL = "teruel", "Teruel"
         ARAGON = "aragon", "Aragón"
+        OTHER = "otras", "Otras regiones"
         ALL = "", "Todas las regiones"
 
     class Status(models.IntegerChoices):

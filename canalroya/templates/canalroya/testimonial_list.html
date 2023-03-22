@@ -134,7 +134,7 @@
         <form method="get">
           <div class="me-3">
             <div class="input-group">
-              <input type="text" class="form-control" id="floatingInput" name="q" placeholder="Buscar"
+              <input type="text" class="form-control" name="q" placeholder="Buscar testimonios"
               aria-label="Buscar testimonios" value="{{ request.GET.q }}">
 
               <button class="btn btn-outline-warning" type="submit"><i class="bi bi-search"></i></button>
@@ -151,9 +151,18 @@
             <li><a class="dropdown-item"
                 href="{% url 'canalroya:testimonial-list' %}?region=huesca#testimonials-content">Huesca</a></li>
             <li><a class="dropdown-item"
+              href="{% url 'canalroya:testimonial-list' %}?region=zaragoza#testimonials-content">Zaragoza</a></li>
+            <li><a class="dropdown-item"
+                href="{% url 'canalroya:testimonial-list' %}?region=teruel#testimonials-content">Teruel</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item"
                 href="{% url 'canalroya:testimonial-list' %}?region=aragon#testimonials-content">Aragón</a></li>
-            <li><a class="dropdown-item" href="{% url 'canalroya:testimonial-list' %}#testimonials-content">Todas las
-                regiones</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{% url 'canalroya:testimonial-list' %}?region=otras#testimonials-content">
+              Otras regiones</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{% url 'canalroya:testimonial-list' %}#testimonials-content">
+              Todas (no filtrar)</a></li>
           </ul>
         </div>
       </div>
