@@ -28,7 +28,6 @@
       {% endwith %}
     </div>
     <div class="mt-4">
-      <h6>{{object.status  }} {{ object.Status.DRAFT }}</h6>
       <a class="btn btn-outline-warning" href="{% url 'canalroya:testimonial-update' object.slug %}#unirme">Editar</a>
       {% if object.status == object.Status.DRAFT %}
       <form method="post" class="d-inline">

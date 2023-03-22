@@ -13,6 +13,7 @@ a) La foto elegida no es personal (tipo autorretrato): p.ej. es un paisaje, un m
 b) Hay un problema con el formato de la foto (está girada, es demasiado pequeña...)
 c) El lenguaje es político, violento u ofensivo y/o ataca o insulta a una persona o grupo de personas.
 Necesitamos comentarios positivos y constructivos para Salvar Canal Roya. ¿Puedes cambiar el tono del lenguaje?
+Gracias por tu comprensión.
 
 Por favor, accede a la siguiente dirección para actualizar tu testimonio:
 https://testimonios.elpirineonosevende.org{url}#unirme
