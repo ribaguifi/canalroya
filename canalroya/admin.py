@@ -16,6 +16,7 @@ class TestimonialAdmin(admin.ModelAdmin):
                     "get_updated_at", "city", "province", "comment", "get_update_link")
     list_filter = ("status", "province")
     search_fields = ['first_name', 'last_name', 'email']
+    readonly_fields = ["generate_slug"]
 
     def get_created_at(self, obj):
         c = Context({"created_at": obj.created_at})
@@ -31,7 +32,7 @@ class TestimonialAdmin(admin.ModelAdmin):
 
     def get_update_link(self, obj):
         if obj.status in [Testimonial.Status.INCOMPLETE, Testimonial.Status.PENDING]:
-            path = reverse("canalroya:testimonial-detail", kwargs={"slug": obj.slug})
+            path = reverse("canalroya:testimonial-preview", kwargs={"slug": obj.slug})
             url = self.request.build_absolute_uri(path)
             return format_html("<p style='text-align:center;'><a href='{}' target='blank'><img alt='public update link'"
                                "src='/static/admin/img/icon-viewlink.svg'></a></p>", url)
