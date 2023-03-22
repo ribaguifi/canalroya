@@ -1,23 +1,31 @@
 from django.conf import settings
-from django.core.mail import send_mass_mail
+from django.core.mail import send_mail, send_mass_mail
 from django.urls import reverse
 
 from canalroya.models import Testimonial, annotate_ephemeral_slug
 
-EMAIL_BODY = """
+INCOMPLETE_EMAIL_BODY = """
 ¡Hola, {name}!
 
 Gracias por unirte a la voz de la montaña.
-Hemos detectado que hay algunos detalles a corregir en tu testimonio:
-- La foto elegida no es personal (tipo autorretrato): p.ej. es un paisaje, un meme o un diseño.
-- Errores ortográficos.
-- Contenido o palabras inadecuadas.
+Hemos detectado que hay algunos de los siguientes problemas en tu testimonio:
+a) La foto elegida no es personal (tipo autorretrato): p.ej. es un paisaje, un meme o un diseño.
+b) Hay un problema con el formato de la foto (está girada, es demasiado pequeña...)
 
-Por favor, accede a la siguiente dirección y actualiza tu testimonio para que podamos aprobarlo y hacerlo público:
+Por favor, accede a la siguiente dirección para actualizar tu testimonio:
 https://testimonios.elpirineonosevende.org{url}#unirme
 
 Si tienes algunda duda puedes escribir a testimonios@elpirineonosevende.org
 Muchas gracias,
+
+#SalvemosCanalRoya
+"""
+
+APPROVED_EMAIL_BODY = """
+¡Hola, {name}!
+
+Tu testimonio ha sido aprobado, gracias por unirte a la voz de la montaña.
+Puedes verlo visitando https://testimonios.elpirineonosevende.org
 
 #SalvemosCanalRoya
 """
@@ -33,10 +41,27 @@ def submit_incomplete_email(queryset):
         update_url = reverse("canalroya:testimonial-update", kwargs={"slug": instance.slug})
         message = (
             'Testimonio incompleto | El Pirineo no se vende',
-            EMAIL_BODY.format(name=instance.first_name, url=update_url),
+            INCOMPLETE_EMAIL_BODY.format(name=instance.first_name, url=update_url),
             settings.DEFAULT_FROM_EMAIL,
             [instance.email]
         )
         datatuple.append(message)
 
     return send_mass_mail(datatuple, fail_silently=True)
+
+
+def notify_testimonial_approved(instance):
+    subject = 'Testimonio aprobado | El Pirineo no se vende'
+    body = APPROVED_EMAIL_BODY.format(name=instance.first_name)
+    from_email = settings.DEFAULT_FROM_EMAIL
+    to_emails = [instance.email]
+    return send_mail(subject, body, from_email, to_emails, fail_silently=True)
+
+
+def notify_testimonial_incomplete(instance):
+    update_url = reverse("canalroya:testimonial-update", kwargs={"slug": instance.slug})
+    subject = 'Testimonio incompleto | El Pirineo no se vende'
+    body = INCOMPLETE_EMAIL_BODY.format(name=instance.first_name, url=update_url)
+    from_email = settings.DEFAULT_FROM_EMAIL
+    to_emails = [instance.email]
+    return send_mail(subject, body, from_email, to_emails, fail_silently=True)

@@ -7,6 +7,7 @@ from django.utils.html import format_html
 from django.utils.translation import ngettext
 
 from canalroya.models import Testimonial, annotate_ephemeral_slug
+from canalroya import utils
 
 
 class TestimonialAdmin(admin.ModelAdmin):
@@ -77,6 +78,16 @@ class TestimonialAdmin(admin.ModelAdmin):
             f'%d testimonials were successfully marked as {status.label}.',
             updated,
         ) % updated, messages.SUCCESS)
+
+    def save_model(self, request, obj, form, change):
+        """Submit emails after moderating"""
+        if "status" in form.changed_data:
+            if obj.status == Testimonial.Status.APPROVED:
+                utils.notify_testimonial_approved(obj)
+            elif obj.status == Testimonial.Status.INCOMPLETE:
+                utils.notify_testimonial_incomplete(obj)
+
+        super().save_model(request, obj, form, change)
 
 
 admin.site.register(Testimonial, TestimonialAdmin)
