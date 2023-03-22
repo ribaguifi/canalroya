@@ -41,6 +41,7 @@ class Testimonial(models.Model):
         SPAM = 3
         TRASH = 4
         INCOMPLETE = 5
+        DRAFT = 6
 
     first_name = models.CharField('Nombre', max_length=30)
     last_name = models.CharField('Apellidos', max_length=150)
