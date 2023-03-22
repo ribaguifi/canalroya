@@ -11,6 +11,7 @@ Gracias por unirte a la voz de la montaña.
 Hemos detectado que hay algunos de los siguientes problemas en tu testimonio:
 a) La foto elegida no es personal (tipo autorretrato): p.ej. es un paisaje, un meme o un diseño.
 b) Hay un problema con el formato de la foto (está girada, es demasiado pequeña...)
+c) El lenguaje es político, violento u ofensivo y/o ataca o insulta a una persona o grupo de personas.
 
 Por favor, accede a la siguiente dirección para actualizar tu testimonio:
 https://testimonios.elpirineonosevende.org{url}#unirme
