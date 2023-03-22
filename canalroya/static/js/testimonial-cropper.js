@@ -43,6 +43,12 @@ $(function () {
         $image.cropper("zoom", -0.1);
     });
 
+    $("#cropper-controls button").click(function () {
+        var method = $(this).data("method");
+        var option = $(this).data("option");
+        $image.cropper(method, option);
+    });
+
     /* SCRIPT TO COLLECT THE DATA AND POST TO THE SERVER */
     $(".js-crop-and-upload").click(function () {
         var cropData = $image.cropper("getData");
