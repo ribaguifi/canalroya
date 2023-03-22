@@ -145,6 +145,24 @@ h1, h2, h3, h4, h5, h6 {
     background: #244251;
 }
 
+#post-footer {
+    background: #1a2e38;
+    text-align: center;
+}
+
+#post-footer .heading-title {
+    color: #fff;
+    font-family: "Raleway",Sans-serif;
+    font-size: 25px;
+    font-weight: 600;
+    margin-bottom: 1.5em;
+}
+
+#post-footer .logo-asamblea  {
+    width: 152px;
+    height: auto;
+}
+
 #unirme {
     background: #ecbe1e;
 }
