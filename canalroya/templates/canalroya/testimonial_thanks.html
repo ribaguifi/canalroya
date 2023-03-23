@@ -5,13 +5,25 @@
   .services .icon a {
     margin-right: 2em;
   }
+  h1, h2, h3, h4 {
+    color: white;
+  }
+  h3 span {
+    font-size: 2em;
+    text-transform: uppercase;
+    display: block;
+  }
 </style>
 {% endblock %}
 
 {% block hero %}
-<h1>¡Gracias!</h1>
-<h2>Hemos recibido correctamente tu testimonio.</h2>
-<h4 style="color: white;">Revisamos los testimonios recibidos antes de publicarlos, revisaremos el tuyo lo antes posible.</h4>
+<div class="p-3" style="background: rgba(0,0,0,0.2); border-radius: 7px;">
+  <h1>¡Gracias!</h1>
+  <h3>Hemos recibido correctamente tu testimonio.</h3>
+  <h4>Revisamos los testimonios recibidos antes de publicarlos, revisaremos el tuyo lo antes posible.</h4>
+  <h2>Por favor, ten paciencia.</h2>
+  <h3>Faltan <span>{{ testimonial_pending_count }} testimonios</span> antes de que revisemos el tuyo.</h3>
+</div>
 {% endblock %}
 
 {% block main %}

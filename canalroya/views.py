@@ -62,6 +62,7 @@ class TestimonialPreviewView(CanalRoyaContextMixin, UpdateView):
         response = super().form_valid(form)
         form.instance.status = Testimonial.Status.PENDING
         form.instance.save()
+        self.request.session['testimonial_pk'] = form.instance.pk
         self.send_email_to_user(form.instance)
         return response
 
@@ -75,7 +76,8 @@ class TestimonialPreviewView(CanalRoyaContextMixin, UpdateView):
         send_mail(
             'Testimonio recibido | El Pirineo no se vende',
             ('Gracias por enviar tu testimonio.\nPuedes ver una vista previa aquí {}\n'
-             ' lo revisaremos y aprobaremos lo antes posible.\n\n#SalvemosCanalRoya'.format(url)),
+             'Lo revisaremos y aprobaremos lo antes posible.\nPOR FAVOR TEN PACIENCIA.\n\n'
+             '#SalvemosCanalRoya'.format(url)),
             from_email,
             to_emails,
             fail_silently=True,
@@ -104,6 +106,15 @@ class TestimonialUpdateView(CanalRoyaContextMixin, UpdateView):
 
 class TestimonialThanksView(CanalRoyaContextMixin, TemplateView):
     template_name = "canalroya/testimonial_thanks.html"
+
+    def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
+        context = super().get_context_data(**kwargs)
+        qs = Testimonial.objects.filter(status=Testimonial.Status.PENDING)
+        pk = self.request.session.get('testimonial_pk', None)
+        if pk is not None:
+            qs = qs.filter(pk__lt=pk)
+        context['testimonial_pending_count'] = qs.count()
+        return context
 
 
 class TestimonialListView(CanalRoyaContextMixin, ListView):
