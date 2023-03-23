@@ -82,13 +82,13 @@ class TestimonialAdmin(admin.ModelAdmin):
 
     def save_model(self, request, obj, form, change):
         """Submit emails after moderating"""
+        super().save_model(request, obj, form, change)
+
         if "status" in form.changed_data:
             if obj.status == Testimonial.Status.APPROVED:
                 utils.notify_testimonial_approved(obj)
             elif obj.status == Testimonial.Status.INCOMPLETE:
                 utils.notify_testimonial_incomplete(obj)
-
-        super().save_model(request, obj, form, change)
 
 
 admin.site.register(Testimonial, TestimonialAdmin)

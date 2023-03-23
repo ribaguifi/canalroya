@@ -62,7 +62,7 @@ def notify_testimonial_approved(instance):
 
 
 def notify_testimonial_incomplete(instance):
-    update_url = reverse("canalroya:testimonial-update", kwargs={"slug": instance.slug})
+    update_url = reverse("canalroya:testimonial-update", kwargs={"slug": instance.generate_slug()})
     subject = 'Testimonio incompleto | El Pirineo no se vende'
     body = INCOMPLETE_EMAIL_BODY.format(name=instance.first_name, url=update_url)
     from_email = settings.DEFAULT_FROM_EMAIL
