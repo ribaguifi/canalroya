@@ -1,6 +1,7 @@
 from typing import Any, Dict
 
 from django.conf import settings
+from django.contrib.postgres.search import TrigramSimilarity
 from django.core.mail import send_mail
 from django.db.models import CharField, Value
 from django.db.models.functions import Concat
@@ -41,7 +42,8 @@ class TestimonialCreateView(CanalRoyaContextMixin, CreateView):
         return HttpResponseRedirect(self.get_success_url())
 
     def get_success_url(self):
-        return reverse('canalroya:testimonial-preview', kwargs={"slug": self.object.generate_slug()}) + "#testimonials-content"
+        path = reverse('canalroya:testimonial-preview', kwargs={"slug": self.object.generate_slug()})
+        return path + "#testimonials-content"
 
 
 class TestimonialPreviewView(CanalRoyaContextMixin, UpdateView):
@@ -96,7 +98,8 @@ class TestimonialUpdateView(CanalRoyaContextMixin, UpdateView):
         return HttpResponseRedirect(self.get_success_url())
 
     def get_success_url(self):
-        return reverse('canalroya:testimonial-preview', kwargs={"slug": self.object.generate_slug()}) + "#testimonials-content"
+        path = reverse('canalroya:testimonial-preview', kwargs={"slug": self.object.generate_slug()})
+        return path + "#testimonials-content"
 
 
 class TestimonialThanksView(CanalRoyaContextMixin, TemplateView):
@@ -104,16 +107,14 @@ class TestimonialThanksView(CanalRoyaContextMixin, TemplateView):
 
 
 class TestimonialListView(CanalRoyaContextMixin, ListView):
+    TRIGRAM_MIN_SIMILARITY = 0.1875
+
     model = Testimonial
     paginate_by = 33
 
     def get_queryset(self):
         qs = Testimonial.objects.filter(status=Testimonial.Status.APPROVED).order_by("priority", "created_at")
-        q = self.clean_search_query()
-        if q:
-            qs = qs.annotate(
-                fullname=Concat('first_name', Value(" "), 'last_name', output_field=CharField()),
-            ).filter(fullname__icontains=q)
+        qs = self.search(qs)
 
         self.region = self.clean_region()
         if self.region:
@@ -131,6 +132,18 @@ class TestimonialListView(CanalRoyaContextMixin, ListView):
                 ])
             else:
                 qs = qs.filter(province=Testimonial.Region(self.region).label)
+        return qs
+
+    def search(self, queryset):
+        query = self.clean_search_query()
+        queryset = queryset.annotate(fullname=Concat('first_name', Value(" "), 'last_name', output_field=CharField()))
+        if query:
+            qs = queryset.filter(fullname__unaccent__icontains=query)
+
+            if not qs.exists():
+                qs = queryset.annotate(similarity=TrigramSimilarity('fullname', query))
+                qs = qs.filter(similarity__gte=self.TRIGRAM_MIN_SIMILARITY).order_by('-similarity')
+
         return qs
 
     def clean_search_query(self):
