@@ -144,7 +144,9 @@ class TestimonialListView(CanalRoyaContextMixin, ListView):
                 qs = queryset.annotate(similarity=TrigramSimilarity('fullname', query))
                 qs = qs.filter(similarity__gte=self.TRIGRAM_MIN_SIMILARITY).order_by('-similarity')
 
-        return qs
+            return qs
+
+        return queryset
 
     def clean_search_query(self):
         q = self.request.GET.get("q", "")
