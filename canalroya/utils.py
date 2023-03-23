@@ -1,3 +1,5 @@
+import urllib
+
 from django.conf import settings
 from django.core.mail import send_mail, send_mass_mail
 from django.urls import reverse
@@ -28,7 +30,7 @@ APPROVED_EMAIL_BODY = """
 ¡Hola, {name}!
 
 Tu testimonio ha sido aprobado, gracias por unirte a la voz de la montaña.
-Puedes verlo visitando https://testimonios.elpirineonosevende.org
+Puedes verlo visitando https://testimonios.elpirineonosevende.org{url}#testimonials-content
 
 #SalvemosCanalRoya
 """
@@ -55,7 +57,7 @@ def submit_incomplete_email(queryset):
 
 def notify_testimonial_approved(instance):
     subject = 'Testimonio aprobado | El Pirineo no se vende'
-    body = APPROVED_EMAIL_BODY.format(name=instance.first_name)
+    body = render_testimonial_approved_body(instance)
     from_email = settings.DEFAULT_FROM_EMAIL
     to_emails = [instance.email]
     return send_mail(subject, body, from_email, to_emails, fail_silently=True)
@@ -68,3 +70,8 @@ def notify_testimonial_incomplete(instance):
     from_email = settings.DEFAULT_FROM_EMAIL
     to_emails = [instance.email]
     return send_mail(subject, body, from_email, to_emails, fail_silently=True)
+
+
+def render_testimonial_approved_body(instance):
+    url = reverse("canalroya:testimonial-list") + "?q={}".format(urllib.parse.quote(instance.get_full_name()))
+    return APPROVED_EMAIL_BODY.format(name=instance.first_name, url=url)

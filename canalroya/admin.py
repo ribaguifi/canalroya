@@ -64,7 +64,7 @@ class TestimonialAdmin(admin.ModelAdmin):
         for instance in queryset:
             message = (
                 'Testimonio aprobado | El Pirineo no se vende',
-                'Tu testimonio ha sido aprobado, gracias por unirte a la voz de la montaña.\n#SalvemosCanalRoya',
+                utils.render_testimonial_approved_body(instance),
                 settings.DEFAULT_FROM_EMAIL,
                 [instance.email]
             )
