@@ -36,9 +36,14 @@
   <link href="{% static 'css/main.css' %}" rel="stylesheet">
 
   <style>
+    body.counter-iframe {
+      background: #ecbe1e;
+    }
+
     .counts {
       display: inline-block;
     }
+
     .counts .count-box {
       width: auto;
     }
@@ -57,14 +62,15 @@
 </head>
 
 <body class="{{ request.resolver_match.url_name }}">
-  <div class="counts">
-    <div class="count-box">
-      <i class="bi bi-person-bounding-box"></i>
-      <span data-purecounter-start="0" data-purecounter-end="{{ count }}" data-purecounter-duration="1"
-        class="purecounter">{{ count }}</span>
+  <div class="d-flex justify-content-center">
+    <div class="counts">
+      <div class="count-box">
+        <i class="bi bi-person-bounding-box"></i>
+        <span data-purecounter-start="0" data-purecounter-end="{{ count }}" data-purecounter-duration="1"
+          class="purecounter">{{ count }}</span>
+      </div>
     </div>
   </div>
-
   <!-- Vendor JS Files -->
   <script src="{% static 'assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
   <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
