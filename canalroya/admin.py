@@ -1,3 +1,4 @@
+import urllib
 from django.conf import settings
 from django.contrib import admin, messages
 from django.core.mail import send_mass_mail
@@ -31,11 +32,21 @@ class TestimonialAdmin(admin.ModelAdmin):
     get_updated_at.short_description = "Updated at"
 
     def get_update_link(self, obj):
-        if obj.status in [Testimonial.Status.INCOMPLETE, Testimonial.Status.PENDING]:
-            path = reverse("canalroya:testimonial-preview", kwargs={"slug": obj.slug})
+        if obj.status in [Testimonial.Status.APPROVED, Testimonial.Status.INCOMPLETE, Testimonial.Status.PENDING]:
+            if obj.status == Testimonial.Status.APPROVED:
+                path = reverse("canalroya:testimonial-list") + "?q={}".format(urllib.parse.quote(obj.get_full_name()))
+                style = "filter: invert(37%) sepia(98%) saturate(320%) hue-rotate(100deg) brightness(93%) contrast(100%);"
+            else:
+                path = reverse("canalroya:testimonial-preview", kwargs={"slug": obj.slug})
+                if obj.status == Testimonial.Status.INCOMPLETE:
+                    style = "filter: invert(49%) sepia(6%) saturate(682%) hue-rotate(166deg) brightness(91%) contrast(89%);"
+                else:
+                    style = "filter: invert(32%) sepia(96%) saturate(1100%) hue-rotate(324deg) brightness(85%) contrast(105%);"
+
             url = self.request.build_absolute_uri(path)
             return format_html("<p style='text-align:center;'><a href='{}' target='blank'><img alt='public update link'"
-                               "src='/static/admin/img/icon-viewlink.svg'></a></p>", url)
+                               "src='/static/admin/img/icon-viewlink.svg' style='{}'></a></p>", url, style)
+
         return format_html("<p style='text-align:center;'>-</p>")
     get_update_link.short_description = format_html("<span title='Comparte este link con el autor para que pueda hacer"
                                                     " correcciones.' style='cursor:help;'>link <img "
