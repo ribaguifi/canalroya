@@ -26,6 +26,19 @@ Muchas gracias,
 #SalvemosCanalRoya
 """
 
+DRAFT_EMAIL_BODY = """
+¡Hola, {name}!
+
+Tu testimonio está pendiente de enviarse (todavía es un borrador).
+Por favor, accede a la siguiente dirección para emviar tu testimonio:
+https://testimonios.elpirineonosevende.org{url}#testimonials-content
+
+Si tienes algunda duda puedes escribir a testimonios@elpirineonosevende.org
+¡Gracias por unirte a la voz de la montaña!
+
+#SalvemosCanalRoya
+"""
+
 APPROVED_EMAIL_BODY = """
 ¡Hola, {name}!
 
@@ -47,6 +60,25 @@ def submit_incomplete_email(queryset):
         message = (
             'Testimonio incompleto | El Pirineo no se vende',
             INCOMPLETE_EMAIL_BODY.format(name=instance.first_name, url=update_url),
+            settings.DEFAULT_FROM_EMAIL,
+            [instance.email]
+        )
+        datatuple.append(message)
+
+    return send_mass_mail(datatuple, fail_silently=True)
+
+
+def send_email_of_draft_testimonials(queryset):
+    if queryset.exclude(status=Testimonial.Status.DRAFT).exists():
+        raise RuntimeError("Link will not work for non DRAFT testimonials.")
+
+    datatuple = []
+    queryset = annotate_ephemeral_slug(queryset)
+    for instance in queryset:
+        update_url = reverse("canalroya:testimonial-preview", kwargs={"slug": instance.slug})
+        message = (
+            'Testimonio pendiente de enviar | El Pirineo no se vende',
+            DRAFT_EMAIL_BODY.format(name=instance.first_name, url=update_url),
             settings.DEFAULT_FROM_EMAIL,
             [instance.email]
         )
