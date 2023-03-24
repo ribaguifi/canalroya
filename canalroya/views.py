@@ -3,7 +3,7 @@ from typing import Any, Dict
 from django.conf import settings
 from django.contrib.postgres.search import TrigramSimilarity
 from django.core.mail import send_mail
-from django.db.models import CharField, Value
+from django.db.models import CharField, Q, Value
 from django.db.models.functions import Concat
 from django.http import HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
@@ -149,7 +149,10 @@ class TestimonialListView(CanalRoyaContextMixin, ListView):
         query = self.clean_search_query()
         queryset = queryset.annotate(fullname=Concat('first_name', Value(" "), 'last_name', output_field=CharField()))
         if query:
-            qs = queryset.filter(fullname__unaccent__icontains=query)
+            qs = queryset.filter(
+                Q(fullname__unaccent__icontains=query) |
+                Q(city__unaccent__icontains=query)
+            )
 
             if not qs.exists():
                 qs = queryset.annotate(similarity=TrigramSimilarity('fullname', query))
