@@ -118,7 +118,7 @@ class TestimonialThanksView(CanalRoyaContextMixin, TemplateView):
 
 
 class TestimonialListView(CanalRoyaContextMixin, ListView):
-    TRIGRAM_MIN_SIMILARITY = 0.1875
+    TRIGRAM_MIN_SIMILARITY = 0.23
 
     model = Testimonial
     paginate_by = 36
@@ -155,7 +155,7 @@ class TestimonialListView(CanalRoyaContextMixin, ListView):
             )
 
             if not qs.exists():
-                qs = queryset.annotate(similarity=TrigramSimilarity('fullname', query))
+                qs = queryset.annotate(similarity=TrigramSimilarity('fullname__unaccent', query))
                 qs = qs.filter(similarity__gte=self.TRIGRAM_MIN_SIMILARITY).order_by('-similarity')
 
             return qs
