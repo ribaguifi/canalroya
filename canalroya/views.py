@@ -121,7 +121,7 @@ class TestimonialListView(CanalRoyaContextMixin, ListView):
     TRIGRAM_MIN_SIMILARITY = 0.1875
 
     model = Testimonial
-    paginate_by = 33
+    paginate_by = 36
 
     def get_queryset(self):
         qs = Testimonial.objects.filter(status=Testimonial.Status.APPROVED).order_by("priority", "created_at")
