@@ -4,19 +4,27 @@
   <h1 class="page-title">Somos la voz<br>de la montaña</h1>
 </div>
 
-
 <!-- ======= Testimonials Section ======= -->
 <section id="testimonials-content" class="testimonials counts">
   <div class="container text-center">
     <h2>VISTA PREVIA</h2>
-    <p>
-      Aquí puedes ver cómo se verá tu testimonio una vez publicado.<br>
-      En caso de que haya algún error <a href="{% url 'canalroya:testimonial-update' object.slug %}#unirme">pulsa aquí para editarlo</a>
-    </p>
+
     <div class="row justify-content-center">
       {% with object as obj %}
-      <div class="col-12 col-md-4 rg-testimonial">
+      <div class="col-12 col-md-6 col-lg-4 rg-testimonial">
+        <p>
+          Aquí puedes ver <strong>una vista previa</strong> de tu testimonio.<br>
+          Por favor, revisa que todo esté correcto todavía estás a tiempo de <a href="{% url 'canalroya:testimonial-update' object.slug %}#unirme">cambiar lo que consideres</a>.
+        </p>
+        {% if object.status == object.Status.DRAFT %}
+          <p>
+           Cuando hayas terminado <strong>recuerda pulsar</strong>
+           <span class="text-success">
+            <i class="bi bi-send"></i> Enviar testimonio</span>.
+          </p>
+          {% endif %}
         <div class="card">
+          <div class="watermark watermark-text">BORRADOR</div>
           <img src="{{ obj.image.url }}" class="card-img-top" alt="{{ obj.get_full_name }}">
           <div class="card-body">
             <h5 class="card-title rg-team-member-name">{{ obj.get_full_name }}</h5>

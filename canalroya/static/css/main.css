@@ -1,6 +1,6 @@
 :root {
---bs-link-color: #cea840;
---bs-link-hover-color: #ecbe1e;
+    --bs-link-color: #cea840;
+    --bs-link-hover-color: #ecbe1e;
 }
 
 a {
@@ -130,11 +130,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #pre-footer .social-share .bi-whatsapp {
-    background-color:#27bf67;
+    background-color: #27bf67;
 }
 
 #pre-footer .social-share .bi-telegram {
-    background-color:#269bd0;
+    background-color: #269bd0;
 }
 
 #pre-footer .social-share .bi-envelope {
@@ -152,13 +152,13 @@ h1, h2, h3, h4, h5, h6 {
 
 #post-footer .heading-title {
     color: #fff;
-    font-family: "Raleway",Sans-serif;
+    font-family: "Raleway", Sans-serif;
     font-size: 25px;
     font-weight: 600;
     margin-bottom: 1.5em;
 }
 
-#post-footer .logo-asamblea  {
+#post-footer .logo-asamblea {
     width: 152px;
     height: auto;
 }
@@ -187,11 +187,50 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 600;
 }
 
+.testimonial-preview .rg-testimonial .card {
+    position: relative;
+}
+
+.testimonial-preview .watermark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.testimonial-preview .watermark.watermark-text {
+    border-radius: 10px;
+    border: 5px solid #d64139;
+    color: #d64139;
+    font-family: "Suez One", Sans-serif;
+    font-size: 2.25em;
+    line-height: 80px;
+    height: 80px;
+    top: 90px;
+    letter-spacing: 10px;
+    transform: rotate(-30deg);
+    z-index: 99;
+}
+
+@media (min-width: 768px) {
+    .testimonial-preview .watermark.watermark-text {
+        line-height: 70px;
+        height: 70px;
+        top: 86px;
+    }
+}
 
 @media (min-width: 992px) {
     #hero {
         background: url('../img/anayet-midi.webp') top center;
         background-size: cover;
+    }
+
+    .testimonial-preview .watermark.watermark-text {
+        font-size: 2em;
+        line-height: 70px;
+        height: 70px;
+        top: 76px;
     }
 }
 
@@ -217,5 +256,12 @@ h1, h2, h3, h4, h5, h6 {
     #footer .copyright {
         width: 50%;
         margin: auto;
+    }
+
+    .testimonial-preview .watermark.watermark-text {
+        font-size: 2.25em;
+        line-height: 100px;
+        height: 100px;
+        top: 106px;
     }
 }
