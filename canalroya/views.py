@@ -124,7 +124,7 @@ class TestimonialListView(CanalRoyaContextMixin, ListView):
     paginate_by = 36
 
     def get_queryset(self):
-        qs = Testimonial.objects.filter(status=Testimonial.Status.APPROVED).order_by("priority", "created_at")
+        qs = Testimonial.objects.filter(status=Testimonial.Status.APPROVED)
         qs = self.search(qs)
 
         self.region = self.clean_region()
@@ -143,6 +143,9 @@ class TestimonialListView(CanalRoyaContextMixin, ListView):
                 ])
             else:
                 qs = qs.filter(province=Testimonial.Region(self.region).label)
+
+        qs = self.sort_queryset(qs)
+
         return qs
 
     def search(self, queryset):
@@ -172,7 +175,32 @@ class TestimonialListView(CanalRoyaContextMixin, ListView):
             return Testimonial.Region.ALL
         return region
 
+    def sort_queryset(self, qs):
+        order_option = self.request.GET.get("o", "")
+        if order_option in ["created_at", "-created_at"]:
+            order_by = order_option
+        elif order_option == "random":
+            order_by = "?"
+        else:
+            # fallback default
+            order_option = "default"
+            order_by = ("priority", "created_at")
+
+        self.sorted_by = order_option
+        return qs.order_by(order_by)
+
     def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
         context = super().get_context_data(**kwargs)
-        context["region_name"] = Testimonial.Region(self.region).label
+        context.update({
+            "region_name": Testimonial.Region(self.region).label,
+            "sort_options": self.get_sort_options(),
+            "sorted_by": self.sorted_by
+        })
         return context
+
+    def get_sort_options(self):
+        return {
+            "created_at": 'Más antiguos <i class="bi bi-arrow-down"></i>',
+            "-created_at": 'Más recientes <i class="bi bi-arrow-up"></i>',
+            "random": 'Orden aleatorio <i class="bi bi-shuffle"></i>',
+        }

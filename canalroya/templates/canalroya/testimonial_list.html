@@ -1,4 +1,5 @@
 {% extends "canalroya/base.html" %}
+{% load paginator_tags %}
 
 {% block hero %}
 {% endblock %}
@@ -130,9 +131,9 @@
         </div>
       </div>
 
-      <div class="col-auto col-md-7 col-lg-5">
-        <div class="row justify-content-end">
-          <div class="col-12 col-lg-8">
+      <div class="col-auto col-md-7 col-lg-9">
+        <div class="row gx-2 justify-content-end">
+          <div class="col-12 col-lg-auto">
             <form method="get">
               <div class="">
                 <div class="input-group">
@@ -144,7 +145,20 @@
               </div>
             </form>
           </div>
-          <div class="col-12 mt-3 col-lg-4 mt-lg-0 text-end">
+          <div class="col-12 d-flex justify-content-end mt-3 col-lg-auto mt-lg-0 text-end">
+            <div class="dropdown me-2">
+              <a id="sortMenu" class="btn btn-warning dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Ordenar
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="sortMenu">
+                {% for value, label in sort_options.items %}
+                <li><a class="dropdown-item"
+                    href="{% url 'canalroya:testimonial-list' %}?o={{ value }}#testimonials-content">{{ label|safe }}</a>
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
             <div class="dropdown">
               <a id="regionMenu" class="btn btn-warning dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                 aria-expanded="false">
@@ -202,7 +216,14 @@
     </div>
 
     <div class="mt-5 row justify-content-center">
-      {% include "canalroya/testimonial_pagination.html" %}
+      {% if sorted_by == "random" %}
+      <div class="col-12 text-center">
+        <a class="btn btn-outline-warning" href="?{% url_replace page=i %}#testimonials-content">
+          Seguir explorando más testimonios <i class="bi bi-shuffle"></i></a>
+      </div>
+      {% else %}
+        {% include "canalroya/testimonial_pagination.html" %}
+      {% endif %}
     </div>
 
   </div>
