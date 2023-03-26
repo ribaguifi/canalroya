@@ -130,43 +130,60 @@
         </div>
       </div>
 
-      <div class="col-auto col-md-7 col-lg-5 text-end d-flex justify-content-end">
-        <form method="get">
-          <div class="me-3">
-            <div class="input-group">
-              <input type="text" class="form-control" name="q" placeholder="Buscar testimonios"
-              aria-label="Buscar testimonios" value="{{ request.GET.q }}">
+      <div class="col-auto col-md-7 col-lg-5">
+        <div class="row justify-content-end">
+          <div class="col-12 col-lg-8">
+            <form method="get">
+              <div class="">
+                <div class="input-group">
+                  <input type="text" class="form-control" name="q" placeholder="Buscar testimonios"
+                    aria-label="Buscar testimonios" value="{{ request.GET.q }}">
 
-              <button class="btn btn-outline-warning" type="submit"><i class="bi bi-search"></i></button>
+                  <button class="btn btn-outline-warning" type="submit"><i class="bi bi-search"></i></button>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="col-12 mt-3 col-lg-4 mt-lg-0 text-end">
+            <div class="dropdown">
+              <a id="regionMenu" class="btn btn-warning dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Filtrar por región
+              </a>
+
+              <ul class="dropdown-menu" aria-labelledby="regionMenu">
+                <li><a class="dropdown-item"
+                    href="{% url 'canalroya:testimonial-list' %}?region=huesca#testimonials-content">Huesca</a></li>
+                <li><a class="dropdown-item"
+                    href="{% url 'canalroya:testimonial-list' %}?region=zaragoza#testimonials-content">Zaragoza</a></li>
+                <li><a class="dropdown-item"
+                    href="{% url 'canalroya:testimonial-list' %}?region=teruel#testimonials-content">Teruel</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item"
+                    href="{% url 'canalroya:testimonial-list' %}?region=aragon#testimonials-content">Aragón</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="{% url 'canalroya:testimonial-list' %}?region=otras#testimonials-content">
+                    Otras regiones</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="{% url 'canalroya:testimonial-list' %}#testimonials-content">
+                    Todas (no filtrar)</a></li>
+              </ul>
             </div>
           </div>
-        </form>
-        <div class="dropdown">
-          <a class="btn btn-warning dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-            aria-expanded="false">
-            Filtrar por región
-          </a>
-
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-            <li><a class="dropdown-item"
-                href="{% url 'canalroya:testimonial-list' %}?region=huesca#testimonials-content">Huesca</a></li>
-            <li><a class="dropdown-item"
-              href="{% url 'canalroya:testimonial-list' %}?region=zaragoza#testimonials-content">Zaragoza</a></li>
-            <li><a class="dropdown-item"
-                href="{% url 'canalroya:testimonial-list' %}?region=teruel#testimonials-content">Teruel</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item"
-                href="{% url 'canalroya:testimonial-list' %}?region=aragon#testimonials-content">Aragón</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="{% url 'canalroya:testimonial-list' %}?region=otras#testimonials-content">
-              Otras regiones</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="{% url 'canalroya:testimonial-list' %}#testimonials-content">
-              Todas (no filtrar)</a></li>
-          </ul>
         </div>
       </div>
+      </div>
 
+    <div class="alert alert-warning alert-dismissible fade show mt-3 mt-lg-0" role="alert">
+      <i class="bi bi-lightbulb"></i>
+      Puedes buscar a gente conocida utilizando su nombre o el nombre de su pueblo.
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
     </div>
 
     <div class="row">
