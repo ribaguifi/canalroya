@@ -183,8 +183,8 @@ class TestimonialListView(CanalRoyaContextMixin, ListView):
             order_by = "?"
         else:
             # fallback default
-            order_option = "default"
-            order_by = ("priority", "created_at")
+            self.sorted_by = "default"
+            return qs.order_by("priority", "created_at")
 
         self.sorted_by = order_option
         return qs.order_by(order_by)
