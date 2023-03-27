@@ -24,6 +24,7 @@ urlpatterns = [
     path('', RedirectView.as_view(
         pattern_name='canalroya:testimonial-list', permanent=True), name='root_index'),
     path('go-home/', RedirectView.as_view(url="https://elpirineonosevende.org/"), name='wp-home'),
+    path('i18n/', include('django.conf.urls.i18n')),
 ]
 
 
