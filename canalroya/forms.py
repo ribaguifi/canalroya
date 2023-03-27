@@ -3,6 +3,7 @@ from typing import Any, Dict
 from django import forms
 from django.urls import reverse_lazy
 from django.utils.html import format_html
+from django.utils.translation import gettext_lazy as _
 from PIL import Image
 
 from canalroya.models import Testimonial
@@ -12,8 +13,8 @@ class TestimonialForm(forms.ModelForm):
     IMAGE_WIDTH = 654
     IMAGE_HEIGHT = 490
 
-    comment = forms.CharField(max_length=400, label="Comentario",
-                              widget=forms.widgets.Textarea, help_text="Máximo 400 carácteres")
+    comment = forms.CharField(max_length=400, label=_("Comentario"),
+                              widget=forms.widgets.Textarea, help_text=_("Máximo 400 carácteres"))
     privacy_policy = forms.BooleanField(required=True, label="Política de privacidad (overrided on __init__)")
 
     x = forms.FloatField(widget=forms.HiddenInput())
@@ -29,8 +30,8 @@ class TestimonialForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['privacy_policy'].label = format_html(
-            ("He leído y acepto la <a target='_blank' href='{}'>política de privacidad</a> "
-             "y declaro que aporto mi testimonio por voluntad propia y con total libertad."),
+            _("He leído y acepto la <a target='_blank' href='{}'>política de privacidad</a> "
+              "y declaro que aporto mi testimonio por voluntad propia y con total libertad."),
             reverse_lazy("canalroya:privacy-policy")
         )
 
@@ -40,7 +41,7 @@ class TestimonialForm(forms.ModelForm):
         if "image" in self.changed_data:
             for fieldname in crop_fields:
                 if fieldname not in cleaned_data:
-                    self.add_error("image", "Por favor, recorta la imagen para ajustar su tamaño.")
+                    self.add_error("image", _("Por favor, recorta la imagen para ajustar su tamaño."))
                     break
         elif self.instance.pk:
             # crop fields are not required because image is not updated

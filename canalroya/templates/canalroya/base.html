@@ -1,12 +1,13 @@
-{% load static %}
+{% load i18n static %}
+{% get_current_language as LANGUAGE_CODE %}
 <!DOCTYPE html>
-<html lang="es">
+<html lang="{{ LANGUAGE_CODE }}">
 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>El Pirineo no se vende - Testimonios</title>
+  <title>Testimonios|El Pirineo no se vende</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -74,8 +75,8 @@
       <nav id="navbar" class="navbar">
         <ul>
           <li><a class="nav-link" href="{% url 'wp-home'%}">Home</a></li>
-          <li><a class="nav-link scrollto" href="{% url 'canalroya:testimonial-new' %}#unirme">Unirme</a></li>
-          <li><a class="nav-link scrollto" href="{% url 'canalroya:testimonial-list' %}#testimonials">Testimonios</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'canalroya:testimonial-new' %}#unirme">{% translate "Unirme" %}</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'canalroya:testimonial-list' %}#testimonials">{% translate "Testimonios" %}</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -87,7 +88,7 @@
   <section id="hero">
     <div class="hero-container" data-aos="fade-up">
       {% block hero %}
-      <h1>Bienvenido/a</h1>
+      <h1>{% translate "Bienvenido/a" %}</h1>
       <h2>#Salvemoscanalroya</h2>
       <a href="#main" class="btn-get-started scrollto"><i class="bx bx-chevrons-down"></i></a>
       {% endblock %}
@@ -107,15 +108,19 @@
         <img class="img-fluid" width="300" height="300" src="{% static 'img/elpirineonosevende-logo.webp' %}" alt="El Pirineo no se vende">
       </div>
       <div class="popular-initiative mb-5">
-        <p>Esto es una iniciativa popular surgida por WhatsApp entre habitantes de los Pirineos y de participación abierta a
+        <p>
+          {% blocktranslate %}
+          Esto es una iniciativa popular surgida por WhatsApp entre habitantes de los Pirineos y de participación abierta a
           todo el mundo, de cualquier territorio. No representamos a ningún partido, ni a ninguna asociación ni a ninguna
-          plataforma. Nos representamos a nosotros mismos.</p>
-        <h2>¿TE SUMAS?</h2>
-        <a class="btn btn-warning" href="{% url 'canalroya:testimonial-new' %}">DEJA TU TESTIMONIO &gt;</a>
+          plataforma. Nos representamos a nosotros mismos.
+          {% endblocktranslate %}
+        </p>
+        <h2>{% translate "¿TE SUMAS?" %}</h2>
+        <a class="btn btn-warning" href="{% url 'canalroya:testimonial-new' %}">{% translate "DEJA TU TESTIMONIO" %} &gt</a>
       </div>
 
       <div class="social-links mb-4">
-        <h2>SÍGUENOS EN REDES</h2>
+        <h2>{% translate "SÍGUENOS EN REDES" %}</h2>
         <div class="icon">
           <a class="" href="https://www.facebook.com/elpirineonosevende/" target="_blank" rel="nofollow"><i class="bi bi-facebook"></i></a>
           <a class="" href="https://www.instagram.com/elpirineonosevende/" target="_blank" rel="nofollow"><i class="bi bi-instagram"></i></a>
@@ -123,7 +128,7 @@
       </div>
 
       <div class="social-share">
-        <h3>¡COMPARTE LA VOZ<br> DE LA MONTAÑA!</h3>
+        <h3>{% trans "¡COMPARTE LA VOZ<br> DE LA MONTAÑA!" %}</h3>
         <div class="icon">
           <a href="https://www.facebook.com/sharer/sharer.php?u=https://elpirineonosevende.org/" target="_blank" rel="nofollow noopener"><i class="bi bi-facebook"></i></a>
           <a href="https://twitter.com/intent/tweet?url=https://elpirineonosevende.org/&text=#SalvemosCanalRoya&via=" target="_blank" rel="nofollow noopener"><i class="bi bi-twitter"></i></a>
@@ -140,26 +145,28 @@
     <div class="container">
 
       <div class="copyright">
+        {% blocktranslate %}
         Gracias a todos/as los/as amigos/as que han animado el hombro para sacar esto adelante y a toda la gente que, sin
         pensarlo, ha ofrecido su testimonio para lanzar el proyecto.
+        {% endblocktranslate %}
       </div>
 
       <div class="text-center mt-3">
-        NOTA: Si una vez enviado tu testimonio quieres eliminarlo escríbenos a
+        {% trans "NOTA: Si una vez enviado tu testimonio quieres eliminarlo escríbenos a" %}
         <a href="mailto:testimonios@elpirineonosevende.org">testimonios@elpirineonosevende.org</a>
       </div>
 
-      <div class="credits mt-3">
-        Diseño <a href="https://garabatoestudio.com" rel="external nofollow noopener" target="_blank">Garabato Estudio</a> /
-        Desarrollo <a href="https://santiagolamora.com" rel="external nofollow noopener" target="_blank">Ribaguifi</a><br class="mb-5">
+      <div class="credits mt-3 mb-5">
+        {% trans "Diseño" %} <a href="https://garabatoestudio.com" rel="external nofollow noopener" target="_blank">Garabato Estudio</a> /
+        {% trans "Desarrollo" %} <a href="https://santiagolamora.com" rel="external nofollow noopener" target="_blank">Ribaguifi</a>
       </div>
 
       <div class="w-50 mx-auto mt-4" style="background-color: #ababab; height: 1px"></div>
       <div class="credits mt-2">
         <ul class="nav justify-content-center">
-          <li class="nav-item"><a class="nav-link" href="{% url 'canalroya:legal-notice' %}">Aviso legal</a></li>
-          <li class="nav-item"><a class="nav-link" href="{% url 'canalroya:privacy-policy' %}">Política de Privacidad</a></li>
-          <li class="nav-item"><a class="nav-link" href="{% url 'canalroya:cookies-policy' %}">Política de Cookies</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'canalroya:legal-notice' %}">{% trans "Aviso legal" %}</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'canalroya:privacy-policy' %}">{% trans "Política de Privacidad" %}</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'canalroya:cookies-policy' %}">{% trans "Política de Cookies" %}</a></li>
         </ul>
       </div>
 
@@ -169,7 +176,7 @@
   <!-- ======= Post-footer ======= -->
   <section id="post-footer">
     <div class="container">
-      <h6 class="heading-title">Si quieres ayudar más a la Canal Roya, contacta con Asamblea Canal Roya</h6>
+      <h6 class="heading-title">{% trans "Si quieres ayudar más a la Canal Roya, contacta con Asamblea Canal Roya" %}</h6>
       <a href="https://asambleacanalroya.wordpress.com/" target="_blank" rel="nofollow">
         <img class="logo-asamblea" width="300" height="300"
           src="{% static 'img/asamblea-canalroya-logo.webp' %}"
