@@ -1,0 +1,332 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-03-27 11:58+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: admin.py:89
+#, python-format, python-brace-format
+msgid "%d testimonial was successfully marked as {status.label}."
+msgid_plural "%d testimonials were successfully marked as {status.label}."
+msgstr[0] ""
+msgstr[1] ""
+
+#: forms.py:16
+msgid "Comentario"
+msgstr ""
+
+#: forms.py:17
+msgid "Máximo 400 carácteres"
+msgstr ""
+
+#: forms.py:33
+msgid ""
+"He leído y acepto la <a target='_blank' href='{}'>política de privacidad</a> "
+"y declaro que aporto mi testimonio por voluntad propia y con total libertad."
+msgstr ""
+
+#: forms.py:44
+msgid "Por favor, recorta la imagen para ajustar su tamaño."
+msgstr ""
+
+#: models.py:51
+msgid "Nombre"
+msgstr ""
+
+#: models.py:52
+msgid "Apellidos"
+msgstr ""
+
+#: models.py:53
+msgid "Correo electrónico"
+msgstr ""
+
+#: models.py:54
+msgid "Profesión"
+msgstr ""
+
+#: models.py:55
+msgid "Localidad"
+msgstr ""
+
+#: models.py:56
+msgid "Provincia"
+msgstr ""
+
+#: models.py:57
+msgid "Comentarios"
+msgstr ""
+
+#: models.py:58
+msgid "Foto personal (tipo autorretrato)"
+msgstr ""
+
+#: models.py:59
+msgid ""
+"Utiliza una foto en la que aparezcas tú. No se aprobarán los testimonios con "
+"fotos de paisajes, ni memes, etc."
+msgstr ""
+
+#: models.py:62
+msgid "created at"
+msgstr ""
+
+#: models.py:63
+msgid "updated at"
+msgstr ""
+
+#: templates/canalroya/base.html:78
+msgid "Unirme"
+msgstr ""
+
+#: templates/canalroya/base.html:79
+msgid "Testimonios"
+msgstr ""
+
+#: templates/canalroya/base.html:91
+msgid "Bienvenido/a"
+msgstr ""
+
+#: templates/canalroya/base.html:112
+msgid ""
+"\n"
+"          Esto es una iniciativa popular surgida por WhatsApp entre "
+"habitantes de los Pirineos y de participación abierta a\n"
+"          todo el mundo, de cualquier territorio. No representamos a ningún "
+"partido, ni a ninguna asociación ni a ninguna\n"
+"          plataforma. Nos representamos a nosotros mismos.\n"
+"          "
+msgstr ""
+
+#: templates/canalroya/base.html:118
+msgid "¿TE SUMAS?"
+msgstr ""
+
+#: templates/canalroya/base.html:119
+msgid "DEJA TU TESTIMONIO"
+msgstr ""
+
+#: templates/canalroya/base.html:123
+msgid "SÍGUENOS EN REDES"
+msgstr ""
+
+#: templates/canalroya/base.html:131
+msgid "¡COMPARTE LA VOZ<br> DE LA MONTAÑA!"
+msgstr ""
+
+#: templates/canalroya/base.html:148
+msgid ""
+"\n"
+"        Gracias a todos/as los/as amigos/as que han animado el hombro para "
+"sacar esto adelante y a toda la gente que, sin\n"
+"        pensarlo, ha ofrecido su testimonio para lanzar el proyecto.\n"
+"        "
+msgstr ""
+
+#: templates/canalroya/base.html:155
+#: templates/canalroya/testimonial_form.html:38
+msgid "NOTA: Si una vez enviado tu testimonio quieres eliminarlo escríbenos a"
+msgstr ""
+
+#: templates/canalroya/base.html:160
+msgid "Diseño"
+msgstr ""
+
+#: templates/canalroya/base.html:161
+msgid "Desarrollo"
+msgstr ""
+
+#: templates/canalroya/base.html:167
+msgid "Aviso legal"
+msgstr ""
+
+#: templates/canalroya/base.html:168
+msgid "Política de Privacidad"
+msgstr ""
+
+#: templates/canalroya/base.html:169
+msgid "Política de Cookies"
+msgstr ""
+
+#: templates/canalroya/base.html:179
+msgid "Si quieres ayudar más a la Canal Roya, contacta con Asamblea Canal Roya"
+msgstr ""
+
+#: templates/canalroya/testimonial_detail.html:11
+msgid "VISTA PREVIA"
+msgstr ""
+
+#: templates/canalroya/testimonial_detail.html:17
+msgid "Aquí puedes ver <strong>una vista previa</strong> de tu testimonio."
+msgstr ""
+
+#: templates/canalroya/testimonial_detail.html:19
+#, python-format
+msgid ""
+"Por favor, revisa que todo esté correcto. Todavía estás a tiempo de <a "
+"href='%%(url_update)#unirme'>cambiar lo que consideres</a>."
+msgstr ""
+
+#: templates/canalroya/testimonial_detail.html:23
+msgid "Cuando hayas terminado, <strong>recuerda pulsar</strong>"
+msgstr ""
+
+#: templates/canalroya/testimonial_detail.html:25
+#: templates/canalroya/testimonial_detail.html:50
+msgid "Enviar testimonio"
+msgstr ""
+
+#: templates/canalroya/testimonial_detail.html:29
+msgid "BORRADOR"
+msgstr ""
+
+#: templates/canalroya/testimonial_detail.html:41
+msgid "Editar"
+msgstr ""
+
+#: templates/canalroya/testimonial_detail.html:55
+msgid ""
+"Esta página es privada y sólo deberías acceder tú.<br> Por favor, no la "
+"compartas."
+msgstr ""
+
+#: templates/canalroya/testimonial_form.html:5
+msgid "Únete a la voz <br>de la montaña"
+msgstr ""
+
+#: templates/canalroya/testimonial_form.html:15
+msgid "Rellena el formulario"
+msgstr ""
+
+#: templates/canalroya/testimonial_form.html:16
+msgid "Manifiesta tu apoyo en defensa de Canal Roya."
+msgstr ""
+
+#: templates/canalroya/testimonial_form.html:17
+msgid ""
+"Expresa tu opinión sobre el proyecto de <strong>manera respetuosa</strong>."
+msgstr ""
+
+#: templates/canalroya/testimonial_form.html:18
+msgid "Evita insultos, lenguaje discriminatorio, propaganda política..."
+msgstr ""
+
+#: templates/canalroya/testimonial_form.html:19
+msgid "Utiliza una foto en la que aparezcas tú."
+msgstr ""
+
+#: templates/canalroya/testimonial_form.html:20
+msgid ""
+"No se aprobarán los testimonios con fotos de paisajes, ni memes, etc. "
+"Utiliza una foto tipo autorretrato."
+msgstr ""
+
+#: templates/canalroya/testimonial_form.html:21
+msgid "Queremos mostrar que somos personas de carne y hueso."
+msgstr ""
+
+#: templates/canalroya/testimonial_form.html:22
+#: templates/canalroya/testimonial_thanks.html:21
+msgid "¡Gracias!"
+msgstr ""
+
+#: templates/canalroya/testimonial_form.html:50
+msgid "Recortar imagen"
+msgstr ""
+
+#: templates/canalroya/testimonial_form.html:75
+msgid "Elegir otra imagen"
+msgstr ""
+
+#: templates/canalroya/testimonial_form.html:76
+msgid "Recortar y continuar"
+msgstr ""
+
+#: templates/canalroya/testimonial_form.html:107
+msgid "Campos obligatorios."
+msgstr ""
+
+#: templates/canalroya/testimonial_list.html:115
+msgid "Somos la voz<br>de la montaña"
+msgstr ""
+
+#: templates/canalroya/testimonial_list.html:130
+msgid "<strong>Testimonios</strong> de"
+msgstr ""
+
+#: templates/canalroya/testimonial_list.html:140
+#: templates/canalroya/testimonial_list.html:141
+msgid "Buscar testimonios"
+msgstr ""
+
+#: templates/canalroya/testimonial_list.html:152
+msgid "Ordenar"
+msgstr ""
+
+#: templates/canalroya/testimonial_list.html:165
+msgid "Filtrar por región"
+msgstr ""
+
+#: templates/canalroya/testimonial_list.html:184
+msgid "Otras regiones"
+msgstr ""
+
+#: templates/canalroya/testimonial_list.html:189
+msgid "Todas (no filtrar)"
+msgstr ""
+
+#: templates/canalroya/testimonial_list.html:199
+msgid ""
+"Puedes buscarte poniendo tu nombre o el nombre de tu pueblo, ciudad o valle."
+msgstr ""
+
+#: templates/canalroya/testimonial_list.html:222
+msgid "Seguir explorando más testimonios"
+msgstr ""
+
+#: templates/canalroya/testimonial_thanks.html:22
+msgid "Hemos recibido correctamente tu testimonio."
+msgstr ""
+
+#: templates/canalroya/testimonial_thanks.html:23
+msgid ""
+"Revisamos los testimonios recibidos antes de publicarlos, revisaremos el "
+"tuyo lo antes posible."
+msgstr ""
+
+#: templates/canalroya/testimonial_thanks.html:24
+msgid "Por favor, ten paciencia."
+msgstr ""
+
+#: templates/canalroya/testimonial_thanks.html:25
+#, python-format
+msgid ""
+"Faltan <span>%(testimonial_pending_count)s testimonios</span> antes de que "
+"revisemos el tuyo."
+msgstr ""
+
+#: views.py:204
+msgid "Más antiguos"
+msgstr ""
+
+#: views.py:205
+msgid "Más recientes"
+msgstr ""
+
+#: views.py:206
+msgid "Orden aleatorio"
+msgstr ""
