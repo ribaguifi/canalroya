@@ -3,103 +3,109 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-03-27 11:58+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2023-03-28 13:03+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 2.3\n"
 
 #: admin.py:89
 #, python-format, python-brace-format
 msgid "%d testimonial was successfully marked as {status.label}."
 msgid_plural "%d testimonials were successfully marked as {status.label}."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d testimonial was successfully marked as {status.label}."
+msgstr[1] "%d testimonials were successfully marked as {status.label}."
 
 #: forms.py:16
 msgid "Comentario"
-msgstr ""
+msgstr "Commentaire"
 
 #: forms.py:17
 msgid "Máximo 400 carácteres"
-msgstr ""
+msgstr "400 caractères maximum"
 
 #: forms.py:33
 msgid ""
 "He leído y acepto la <a target='_blank' href='{}'>política de privacidad</a> "
 "y declaro que aporto mi testimonio por voluntad propia y con total libertad."
 msgstr ""
+"J'ai lu et j'accepte la <a target='_blank' href='{}'>politique de "
+"confidentialité</a> et je déclare apporter mon témoignage volontairement et "
+"en toute liberté."
 
 #: forms.py:44
 msgid "Por favor, recorta la imagen para ajustar su tamaño."
 msgstr ""
+"Nous vous prions de réajuster l'image pour l'adapter à la taille du cadre."
 
 #: models.py:51
 msgid "Nombre"
-msgstr ""
+msgstr "Prénom"
 
 #: models.py:52
 msgid "Apellidos"
-msgstr ""
+msgstr "Nom"
 
 #: models.py:53
 msgid "Correo electrónico"
-msgstr ""
+msgstr "Courrier électronique"
 
 #: models.py:54
 msgid "Profesión"
-msgstr ""
+msgstr "Profession"
 
 #: models.py:55
 msgid "Localidad"
-msgstr ""
+msgstr "Localité"
 
 #: models.py:56
 msgid "Provincia"
-msgstr ""
+msgstr "Province/Département"
 
 #: models.py:57
 msgid "Comentarios"
-msgstr ""
+msgstr "Commentaires"
 
 #: models.py:58
 msgid "Foto personal (tipo autorretrato)"
-msgstr ""
+msgstr "Photo personnelle (de type autoportrait)"
 
 #: models.py:59
 msgid ""
 "Utiliza una foto en la que aparezcas tú. No se aprobarán los testimonios con "
 "fotos de paisajes, ni memes, etc."
 msgstr ""
+"Utilisez une photo où vous apparaissez. Les témoignages accompagnés de "
+"photos de paysages, de MMS... ne seront pas inclus."
 
 #: models.py:62
 msgid "created at"
-msgstr ""
+msgstr "created at"
 
 #: models.py:63
 msgid "updated at"
-msgstr ""
+msgstr "updated at"
 
 #: templates/canalroya/base.html:78
 msgid "Unirme"
-msgstr ""
+msgstr "Je participe"
 
 #: templates/canalroya/base.html:79
 msgid "Testimonios"
-msgstr ""
+msgstr "Témoignages"
 
 #: templates/canalroya/base.html:91
 msgid "Bienvenido/a"
-msgstr ""
+msgstr "Bienvenu/e"
 
 #: templates/canalroya/base.html:112
 msgid ""
@@ -111,22 +117,29 @@ msgid ""
 "          plataforma. Nos representamos a nosotros mismos.\n"
 "          "
 msgstr ""
+"\n"
+"          Nous sommes une initiative populaire née d’un dialogue initié par "
+"WhatsApp entre des habitants et des habitantes des Pyrénées et à laquelle\n"
+"          tout le monde peut participer, peu importe son territoire "
+"d’origine. Nous ne représentons aucun parti, aucune association ni\n"
+"          plateforme. Nous ne représentons que nous-même.\n"
+"          "
 
 #: templates/canalroya/base.html:118
 msgid "¿TE SUMAS?"
-msgstr ""
+msgstr "ENVIE DE PARTICIPER?"
 
 #: templates/canalroya/base.html:119
 msgid "DEJA TU TESTIMONIO"
-msgstr ""
+msgstr "LAISSEZ VOTRE TÉMOIGNAGE"
 
 #: templates/canalroya/base.html:123
 msgid "SÍGUENOS EN REDES"
-msgstr ""
+msgstr "SUIVEZ-NOUS SUR LES RÉSEAUX"
 
 #: templates/canalroya/base.html:131
 msgid "¡COMPARTE LA VOZ<br> DE LA MONTAÑA!"
-msgstr ""
+msgstr "PARTAGEZ LA VOIX<br> DE LA MONTAGNE !"
 
 #: templates/canalroya/base.html:148
 msgid ""
@@ -136,43 +149,54 @@ msgid ""
 "        pensarlo, ha ofrecido su testimonio para lanzar el proyecto.\n"
 "        "
 msgstr ""
+"\n"
+"        Merci à toutes les personnes qui ont travaillé à la mise en place de "
+"cet outil et à toutes celles et tous ceux qui, sans\n"
+"        aucune hésitation, ont offert leur témoignage pour permettre le "
+"lancement de cette initiative.\n"
+"        "
 
 #: templates/canalroya/base.html:155
 #: templates/canalroya/testimonial_form.html:38
 msgid "NOTA: Si una vez enviado tu testimonio quieres eliminarlo escríbenos a"
 msgstr ""
+"N.B. : Si après avoir envoyé votre témoignage vous souhaitez l’éliminer, il "
+"vous suffit d’écrire à"
 
 #: templates/canalroya/base.html:160
 msgid "Diseño"
-msgstr ""
+msgstr "Conception"
 
 #: templates/canalroya/base.html:161
 msgid "Desarrollo"
-msgstr ""
+msgstr "Développement"
 
 #: templates/canalroya/base.html:167
 msgid "Aviso legal"
-msgstr ""
+msgstr "Mentions légales"
 
 #: templates/canalroya/base.html:168
 msgid "Política de Privacidad"
-msgstr ""
+msgstr "Politique de confidentialité"
 
 #: templates/canalroya/base.html:169
 msgid "Política de Cookies"
-msgstr ""
+msgstr "Politique de cookies"
 
 #: templates/canalroya/base.html:179
 msgid "Si quieres ayudar más a la Canal Roya, contacta con Asamblea Canal Roya"
 msgstr ""
+"Si vous souhaitez participer encore plus activement à la sauvegarde de la "
+"vallée de la Canal Roya, contactez la Asamblea Canal Roya"
 
 #: templates/canalroya/testimonial_detail.html:11
 msgid "VISTA PREVIA"
-msgstr ""
+msgstr "PRÉVISUALISATION"
 
 #: templates/canalroya/testimonial_detail.html:17
 msgid "Aquí puedes ver <strong>una vista previa</strong> de tu testimonio."
 msgstr ""
+"Regardez ici <strong>une prévisualisation</strong> de votre témoignage."
 
 #: templates/canalroya/testimonial_detail.html:19
 #, python-format
@@ -180,137 +204,150 @@ msgid ""
 "Por favor, revisa que todo esté correcto. Todavía estás a tiempo de <a "
 "href='%%(url_update)#unirme'>cambiar lo que consideres</a>."
 msgstr ""
+"Vérifiez que tout est correct. Il est encore temps de <a "
+"href='%%(url_update)#unirme'>faire des modifications si vous le jugez utile</"
+"a>."
 
 #: templates/canalroya/testimonial_detail.html:23
 msgid "Cuando hayas terminado, <strong>recuerda pulsar</strong>"
-msgstr ""
+msgstr "Lorsque vous aurez terminé, <strong>pensez à cliquer sur</strong>"
 
 #: templates/canalroya/testimonial_detail.html:25
 #: templates/canalroya/testimonial_detail.html:50
 msgid "Enviar testimonio"
-msgstr ""
+msgstr "Envoyer le témoignage"
 
 #: templates/canalroya/testimonial_detail.html:29
 msgid "BORRADOR"
-msgstr ""
+msgstr "APERÇU AVANT PUBLICATION"
 
 #: templates/canalroya/testimonial_detail.html:41
 msgid "Editar"
-msgstr ""
+msgstr "Modifier"
 
 #: templates/canalroya/testimonial_detail.html:55
 msgid ""
 "Esta página es privada y sólo deberías acceder tú.<br> Por favor, no la "
 "compartas."
 msgstr ""
+"Cette page est privée, vous seulement devriez y avoir accès.<br> Nous vous "
+"prions de ne pas la partager."
 
 #: templates/canalroya/testimonial_form.html:5
 msgid "Únete a la voz <br>de la montaña"
-msgstr ""
+msgstr "Rejoignez la voix <br>de la montagne"
 
 #: templates/canalroya/testimonial_form.html:15
 msgid "Rellena el formulario"
-msgstr ""
+msgstr "Remplissez le formulaire"
 
 #: templates/canalroya/testimonial_form.html:16
 msgid "Manifiesta tu apoyo en defensa de Canal Roya."
-msgstr ""
+msgstr "Exprimez votre soutien pour la défense de la Canal Roya."
 
 #: templates/canalroya/testimonial_form.html:17
 msgid ""
 "Expresa tu opinión sobre el proyecto de <strong>manera respetuosa</strong>."
 msgstr ""
+"Partagez votre opinion sur le projet de <strong>façon respectueuse</strong>."
 
 #: templates/canalroya/testimonial_form.html:18
 msgid "Evita insultos, lenguaje discriminatorio, propaganda política..."
 msgstr ""
+"Évitez les insultes, le langage discriminatoire, la propagande politique..."
 
 #: templates/canalroya/testimonial_form.html:19
 msgid "Utiliza una foto en la que aparezcas tú."
-msgstr ""
+msgstr "Utilisez une photo où l'on vous voie."
 
 #: templates/canalroya/testimonial_form.html:20
 msgid ""
 "No se aprobarán los testimonios con fotos de paisajes, ni memes, etc. "
 "Utiliza una foto tipo autorretrato."
 msgstr ""
+"Les témoignages avec des photos de paysages, de MMS... ne seront pas inclus. "
+"Utilisez une photo de type autoportrait."
 
 #: templates/canalroya/testimonial_form.html:21
 msgid "Queremos mostrar que somos personas de carne y hueso."
-msgstr ""
+msgstr "Nous voulons montrer que nous sommes des personnes en chair et en os."
 
 #: templates/canalroya/testimonial_form.html:22
 #: templates/canalroya/testimonial_thanks.html:21
 msgid "¡Gracias!"
-msgstr ""
+msgstr "Merci !"
 
 #: templates/canalroya/testimonial_form.html:50
 msgid "Recortar imagen"
-msgstr ""
+msgstr "Ajuster l'image"
 
 #: templates/canalroya/testimonial_form.html:75
 msgid "Elegir otra imagen"
-msgstr ""
+msgstr "Choisir une autre image"
 
 #: templates/canalroya/testimonial_form.html:76
 msgid "Recortar y continuar"
-msgstr ""
+msgstr "Ajuster et continuer"
 
 #: templates/canalroya/testimonial_form.html:107
 msgid "Campos obligatorios."
-msgstr ""
+msgstr "Champs obligatoires."
 
 #: templates/canalroya/testimonial_list.html:115
 msgid "Somos la voz<br>de la montaña"
-msgstr ""
+msgstr "Nous sommes la voix<br>de la montagne"
 
 #: templates/canalroya/testimonial_list.html:130
 msgid "<strong>Testimonios</strong> de"
-msgstr ""
+msgstr "<strong>Témoignages</strong> de"
 
 #: templates/canalroya/testimonial_list.html:140
 #: templates/canalroya/testimonial_list.html:141
 msgid "Buscar testimonios"
-msgstr ""
+msgstr "Chercher des témoignages"
 
 #: templates/canalroya/testimonial_list.html:152
 msgid "Ordenar"
-msgstr ""
+msgstr "Classer"
 
 #: templates/canalroya/testimonial_list.html:165
 msgid "Filtrar por región"
-msgstr ""
+msgstr "Filtrer par région"
 
 #: templates/canalroya/testimonial_list.html:184
 msgid "Otras regiones"
-msgstr ""
+msgstr "Autre régions"
 
 #: templates/canalroya/testimonial_list.html:189
 msgid "Todas (no filtrar)"
-msgstr ""
+msgstr "Toutes (sans filtre)"
 
 #: templates/canalroya/testimonial_list.html:199
 msgid ""
 "Puedes buscarte poniendo tu nombre o el nombre de tu pueblo, ciudad o valle."
 msgstr ""
+"Vous pouvez trouver votre témoignage en indiquant votre nom ou le nom de "
+"votre village, ville ou vallée."
 
 #: templates/canalroya/testimonial_list.html:222
 msgid "Seguir explorando más testimonios"
-msgstr ""
+msgstr "Continuer à découvrir d'autres témoignages"
 
 #: templates/canalroya/testimonial_thanks.html:22
 msgid "Hemos recibido correctamente tu testimonio."
-msgstr ""
+msgstr "Nous avons reçu correctement votre témoignage."
 
 #: templates/canalroya/testimonial_thanks.html:23
 msgid ""
 "Revisamos los testimonios recibidos antes de publicarlos, revisaremos el "
 "tuyo lo antes posible."
 msgstr ""
+"Nous vérifions les témoignages reçus avant de les publier, nous ferons de "
+"même avec le vôtre dans les plus brefs délais."
 
 #: templates/canalroya/testimonial_thanks.html:24
 msgid "Por favor, ten paciencia."
-msgstr ""
+msgstr "Merci de votre patience."
 
 #: templates/canalroya/testimonial_thanks.html:25
 #, python-format
@@ -318,15 +355,17 @@ msgid ""
 "Faltan <span>%(testimonial_pending_count)s testimonios</span> antes de que "
 "revisemos el tuyo."
 msgstr ""
+"D'autres <span>%(testimonial_pending_count)s témoignages</span> attendent "
+"d'être vérifiés."
 
 #: views.py:204
 msgid "Más antiguos"
-msgstr ""
+msgstr "Plus anciens"
 
 #: views.py:205
 msgid "Más recientes"
-msgstr ""
+msgstr "Plus récents"
 
 #: views.py:206
 msgid "Orden aleatorio"
-msgstr ""
+msgstr "Ordre aléatoire"
