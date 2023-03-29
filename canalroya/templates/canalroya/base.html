@@ -77,16 +77,12 @@
           <li><a class="nav-link" href="{% url 'wp-home'%}">Home</a></li>
           <li><a class="nav-link scrollto" href="{% url 'canalroya:testimonial-new' %}#unirme">{% translate "Unirme" %}</a></li>
           <li><a class="nav-link scrollto" href="{% url 'canalroya:testimonial-list' %}#testimonials">{% translate "Testimonios" %}</a></li>
-          <li class="language-selector">
-              <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
-                <input name="next" type="hidden" value="{{ redirect_to }}">
-                {% get_available_languages as LANGUAGES %}
-                {% get_language_info_list for LANGUAGES as languages %}
-                {% for language in languages %}
-                  <button class="btn" type="submit" name="language" value="{{ language.code }}">{{ language.code|upper }}</button>
-                {% endfor %}
-            </form>
-          </li>
+          {% get_available_languages as languages %}
+          {% for lang_code, lang_name in languages %}
+            {% language lang_code %}
+            <li><a class="nav-link" href="{% url 'root_index' %}">{{ lang_code|upper }}</a></li>
+            {% endlanguage %}
+          {% endfor %}
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->

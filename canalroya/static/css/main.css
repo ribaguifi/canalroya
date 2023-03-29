@@ -34,19 +34,13 @@ h1, h2, h3, h4, h5, h6 {
     width: 60px;
 }
 
-#header #navbar .nav-link,
-.language-selector .btn {
+#header #navbar .nav-link {
     font-family: "Suez One", Sans-serif;
     font-weight: normal;
     text-transform: uppercase;
 }
 
-.language-selector .btn {
-    color: white;
-}
-
-.navbar-mobile,
-.navbar-mobile .language-selector .btn {
+.navbar-mobile {
     background: rgba(236, 190, 30, 0.9);
     text-align: center;
 }
