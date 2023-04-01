@@ -258,15 +258,14 @@ msgstr ""
 
 #: templates/canalroya/testimonial_form.html:19
 msgid "Utiliza una foto en la que aparezcas tú."
-msgstr "Utilisez une photo où l'on vous voie."
+msgstr "Utilisez une photo de type autoportrait."
 
 #: templates/canalroya/testimonial_form.html:20
 msgid ""
 "No se aprobarán los testimonios con fotos de paisajes, ni memes, etc. "
 "Utiliza una foto tipo autorretrato."
 msgstr ""
-"Les témoignages avec des photos de paysages, de MMS... ne seront pas inclus. "
-"Utilisez une photo de type autoportrait."
+"Les témoignages avec des photos de paysages, de MMS... ne seront pas inclus."
 
 #: templates/canalroya/testimonial_form.html:21
 msgid "Queremos mostrar que somos personas de carne y hueso."
