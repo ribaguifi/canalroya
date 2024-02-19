@@ -1,4 +1,5 @@
 {% extends "canalroya/testimonial_list.html" %}
+{% load i18n %}
 {% block main %}
 <div id="testimonials" class="d-flex justify-content-center">
   <h1 class="page-title">Somos la voz<br>de la montaña</h1>
@@ -7,24 +8,25 @@
 <!-- ======= Testimonials Section ======= -->
 <section id="testimonials-content" class="testimonials counts">
   <div class="container text-center">
-    <h2>VISTA PREVIA</h2>
+    <h2>{% trans "VISTA PREVIA" %}</h2>
 
     <div class="row justify-content-center">
       {% with object as obj %}
       <div class="col-12 col-md-6 col-lg-4 rg-testimonial">
         <p>
-          Aquí puedes ver <strong>una vista previa</strong> de tu testimonio.<br>
-          Por favor, revisa que todo esté correcto. Todavía estás a tiempo de <a href="{% url 'canalroya:testimonial-update' object.slug %}#unirme">cambiar lo que consideres</a>.
+          {% trans "Aquí puedes ver <strong>una vista previa</strong> de tu testimonio." %}<br>
+          {% url 'canalroya:testimonial-update' object.slug as url_update %}
+          {% trans "Por favor, revisa que todo esté correcto. Todavía estás a tiempo de <a href='%(url_update)#unirme'>cambiar lo que consideres</a>." %}
         </p>
         {% if object.status == object.Status.DRAFT %}
           <p>
-           Cuando hayas terminado, <strong>recuerda pulsar</strong>
+          {% trans "Cuando hayas terminado, <strong>recuerda pulsar</strong>" %}
            <span class="text-success">
-            <i class="bi bi-send"></i> Enviar testimonio</span>.
+            <i class="bi bi-send"></i> {% trans "Enviar testimonio" %}</span>.
           </p>
           {% endif %}
         <div class="card">
-          <div class="watermark watermark-text">BORRADOR</div>
+          <div class="watermark watermark-text">{% trans "BORRADOR" %}</div>
           <img src="{{ obj.image.url }}" class="card-img-top" alt="{{ obj.get_full_name }}">
           <div class="card-body">
             <h5 class="card-title rg-team-member-name">{{ obj.get_full_name }}</h5>
@@ -36,7 +38,7 @@
       {% endwith %}
     </div>
     <div class="mt-4">
-      <a class="btn btn-outline-warning" href="{% url 'canalroya:testimonial-update' object.slug %}#unirme">Editar</a>
+      <a class="btn btn-outline-warning" href="{% url 'canalroya:testimonial-update' object.slug %}#unirme">{% trans "Editar" %}</a>
       {% if object.status == object.Status.DRAFT %}
       <form method="post" class="d-inline">
         {% csrf_token %}
@@ -45,12 +47,12 @@
         </div>
         <button class="ms-3 btn btn-outline-success" type="submit">
           <i class="bi bi-send"></i>
-          Enviar testimonio
+          {% trans "Enviar testimonio" %}
         </button>
       </form>
       {% endif %}
     </div>
-    <h5 class="mt-4">Esta página es privada y sólo deberías acceder tú.<br> Por favor, no la compartas.</h5>
+    <h5 class="mt-4">{% trans "Esta página es privada y sólo deberías acceder tú.<br> Por favor, no la compartas." %}</h5>
   </div>
 
 </section>

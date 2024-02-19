@@ -7,6 +7,7 @@ from django.db.models import CharField, Q, Value
 from django.db.models.functions import Concat
 from django.http import HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
+from django.utils.translation import gettext_lazy as _
 from django.views.generic import CreateView, ListView, TemplateView, UpdateView
 
 from canalroya.forms import TestimonialForm
@@ -200,7 +201,7 @@ class TestimonialListView(CanalRoyaContextMixin, ListView):
 
     def get_sort_options(self):
         return {
-            "created_at": 'Más antiguos <i class="bi bi-arrow-down"></i>',
-            "-created_at": 'Más recientes <i class="bi bi-arrow-up"></i>',
-            "random": 'Orden aleatorio <i class="bi bi-shuffle"></i>',
+            "created_at": _('Más antiguos') + ' <i class="bi bi-arrow-down"></i>',
+            "-created_at": _('Más recientes') + ' <i class="bi bi-arrow-up"></i>',
+            "random": _('Orden aleatorio') + ' <i class="bi bi-shuffle"></i>',
         }

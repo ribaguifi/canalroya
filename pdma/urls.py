@@ -14,18 +14,21 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.conf import settings
+from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
 from django.urls import include, path
 from django.views.generic import RedirectView
 
 urlpatterns = [
     path('turberes/', admin.site.urls),
-    path('', include('canalroya.urls')),
-    path('', RedirectView.as_view(
-        pattern_name='canalroya:testimonial-list', permanent=True), name='root_index'),
     path('go-home/', RedirectView.as_view(url="https://elpirineonosevende.org/"), name='wp-home'),
 ]
 
+urlpatterns += i18n_patterns(
+    path('', include('canalroya.urls')),
+    path('', RedirectView.as_view(pattern_name='canalroya:testimonial-list', permanent=True), name='root_index'),
+    prefix_default_language=False,
+)
 
 if settings.DEBUG:
     from django.conf.urls.static import static

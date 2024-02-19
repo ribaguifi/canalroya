@@ -1,5 +1,5 @@
 {% extends "canalroya/base.html" %}
-
+{% load i18n %}
 {% block extra_style %}
 <style>
   .services .icon a {
@@ -18,11 +18,11 @@
 
 {% block hero %}
 <div class="p-3" style="background: rgba(0,0,0,0.2); border-radius: 7px;">
-  <h1>¡Gracias!</h1>
-  <h3>Hemos recibido correctamente tu testimonio.</h3>
-  <h4>Revisamos los testimonios recibidos antes de publicarlos, revisaremos el tuyo lo antes posible.</h4>
-  <h2>Por favor, ten paciencia.</h2>
-  <h3>Faltan <span>{{ testimonial_pending_count }} testimonios</span> antes de que revisemos el tuyo.</h3>
+  <h1>{% trans "¡Gracias!" %}</h1>
+  <h3>{% trans "Hemos recibido correctamente tu testimonio." %}</h3>
+  <h4>{% trans "Revisamos los testimonios recibidos antes de publicarlos, revisaremos el tuyo lo antes posible." %}</h4>
+  <h2>{% trans "Por favor, ten paciencia." %}</h2>
+  <h3>{% blocktranslate %}Faltan <span>{{ testimonial_pending_count }} testimonios</span> antes de que revisemos el tuyo.{% endblocktranslate %}</h3>
 </div>
 {% endblock %}
 

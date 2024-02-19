@@ -48,16 +48,16 @@ class Testimonial(models.Model):
         INCOMPLETE = 5
         DRAFT = 6
 
-    first_name = models.CharField('Nombre', max_length=30)
-    last_name = models.CharField('Apellidos', max_length=150)
-    email = models.EmailField('Correo electrónico')
-    profession = models.CharField('Profesión', max_length=150)
-    city = models.CharField('Localidad', max_length=50)
-    province = models.CharField('Provincia', max_length=50, choices=get_province_choices())
-    comment = models.TextField('Comentarios')
-    image = models.ImageField('Foto personal (tipo autorretrato)', upload_to=testimonial_image_path,
-                              help_text=("Utiliza una foto en la que aparezcas tú. No se aprobarán "
-                                         "los testimonios con fotos de paisajes, ni memes, etc."))
+    first_name = models.CharField(_('Nombre'), max_length=30)
+    last_name = models.CharField(_('Apellidos'), max_length=150)
+    email = models.EmailField(_('Correo electrónico'))
+    profession = models.CharField(_('Profesión'), max_length=150)
+    city = models.CharField(_('Localidad'), max_length=50)
+    province = models.CharField(_('Provincia'), max_length=50, choices=get_province_choices())
+    comment = models.TextField(_('Comentarios'))
+    image = models.ImageField(_('Foto personal (tipo autorretrato)'), upload_to=testimonial_image_path,
+                              help_text=(_("Utiliza una foto en la que aparezcas tú. No se aprobarán "
+                                           "los testimonios con fotos de paisajes, ni memes, etc.")))
 
     created_at = models.DateTimeField(_('created at'), auto_now_add=True)
     updated_at = models.DateTimeField(_('updated at'), auto_now=True)

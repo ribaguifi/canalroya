@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 from pathlib import Path
 
 import environ
+from django.utils.translation import gettext_lazy as _
 
 env = environ.Env(
     # set casting, default value
@@ -55,6 +56,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -113,13 +115,20 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
-LANGUAGE_CODE = 'es-es'
+LANGUAGE_CODE = 'es'
+
+LANGUAGES = [
+    ('es', _('Spanish')),
+    ('fr', _('French')),
+]
 
 TIME_ZONE = 'Europe/Madrid'
 
 USE_I18N = True
 
 USE_TZ = True
+
+LOCALE_PATHS = [Path(BASE_DIR, 'canalroya/locale')]
 
 
 # Static files (CSS, JavaScript, Images)
